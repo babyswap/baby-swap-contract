@@ -1,0 +1,2522 @@
+[
+    {
+        "pid": 0,
+        "lpSymbol": "CAKE-USDT LP",
+        "lpAddresses": {
+            "56": "0x2b1Ab050D9975c5449B12B2a084630F51d14D80f",
+            "97": "0x8AED3E404A898FCc31E7608833254F8BeD9E2A44"
+        },
+        "token": "##tokens.cake##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 1,
+        "lpSymbol": "BUSD-USDT LP",
+        "lpAddresses": {
+            "56": "0x249cd054697f41d73F1A81fa0F5279fcce3cF70c",
+            "97": "0x4859a09fc6Eae9475AaA6c74D82ecf148405b7E0"
+        },
+        "token": "##tokens.busd##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 2,
+        "lpSymbol": "WBNB-USDT LP",
+        "lpAddresses": {
+            "56": "0x04580ce6dEE076354e96fED53cb839DE9eFb5f3f",
+            "97": "0x4dC010319D0e8A55bd593E5FCc9ecFd62C7dDA2c"
+        },
+        "token": "##tokens.wbnb##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 3,
+        "lpSymbol": "DOGE-USDT LP",
+        "lpAddresses": {
+            "56": "0x5784425C93F264ef667A0695317196a3bb457C55",
+            "97": "0x484e4d5a0e2D30cCb255a221b1F1a778178022B9"
+        },
+        "token": "##tokens.doge##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 4,
+        "lpSymbol": "BTC-USDT LP",
+        "lpAddresses": {
+            "56": "0xcF84f1e50eE4FbeFAC8822C06D0ed01a28904c50",
+            "97": "0xC328aB673E2451269B13c2932423AFB86a28B961"
+        },
+        "token": "##tokens.btc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 5,
+        "lpSymbol": "ETH-USDT LP",
+        "lpAddresses": {
+            "56": "0xfa0C1bD534784b978b4d5c426836f7c44f5C0b20",
+            "97": "0xeF76328805a6a01af815F4f80143DE8A74CDbf93"
+        },
+        "token": "##tokens.eth##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 6,
+        "lpSymbol": "TWT-USDT LP",
+        "lpAddresses": {
+            "56": "0xa4Da92f82aD83DFac4C6249CCB3071eA0ABd0141",
+            "97": "0xA68D85dC4A92A1f015811Ba2e99E48c09BE8a362"
+        },
+        "token": "##tokens.twt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 7,
+        "lpSymbol": "BAKE-USDT LP",
+        "lpAddresses": {
+            "56": "0xDFC792757C72FBe0d163c808ee94Cd691eC740D3",
+            "97": "0x3a38b23636923271018f4667a92AD881E916978A"
+        },
+        "token": "##tokens.bake##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 8,
+        "lpSymbol": "SAFEMOON-USDT LP",
+        "lpAddresses": {
+            "56": "0x09eF640df704a75921b3489539fAdAcF1D594F85",
+            "97": "0xC79C5c7F693846De0026FDCb2Bfc156B138BCF17"
+        },
+        "token": "##tokens.safemoon##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 9,
+        "lpSymbol": "SFP-USDT LP",
+        "lpAddresses": {
+            "56": "0xA809687d97ea8632B70fbcb8aa3075aA011DE97A",
+            "97": "0x9FBe4531FA3a4A16749CA5b94D7973f5323C07f6"
+        },
+        "token": "##tokens.sfp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 10,
+        "lpSymbol": "BUNNY-USDT LP",
+        "lpAddresses": {
+            "56": "0x2F19bDE7a83f80d9F768F341412e6Eb13229d8B1",
+            "97": "0x9753e464a22680Ae477Ba8abB6860fAA7F292Ddc"
+        },
+        "token": "##tokens.bunny##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 11,
+        "lpSymbol": "DOT-USDT LP",
+        "lpAddresses": {
+            "56": "0x97aF56C43C45bdcB08fD826D8F4f4dB8D1e11BF7",
+            "97": "0x578a93b21D3b994e49D9F2dA38Ac3612066ba7fA"
+        },
+        "token": "##tokens.dot##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 12,
+        "lpSymbol": "FEG-USDT LP",
+        "lpAddresses": {
+            "56": "0x12afd2fea43B0332DCcc8339F8b2dA68eeb12f71",
+            "97": "0xC24273672C139bCC4a04EC5fBBbD1cFfa6903113"
+        },
+        "token": "##tokens.feg##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 13,
+        "lpSymbol": "LOWB-USDT LP",
+        "lpAddresses": {
+            "56": "0x0517f71b2552b7e2EFb6AaE60295846F6b6085f3",
+            "97": "0xcE733a6e1DC45629587d898FE91DB6465aBb8a92"
+        },
+        "token": "##tokens.lowb##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 14,
+        "lpSymbol": "MATIC-USDT LP",
+        "lpAddresses": {
+            "56": "0xAB8C7Ef18a51fb865FCEEb8773Fd801fBF89DDA7",
+            "97": "0x0c487439a67ECeFa9d7630736952D0E613d4Af77"
+        },
+        "token": "##tokens.matic##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 15,
+        "lpSymbol": "MDX-USDT LP",
+        "lpAddresses": {
+            "56": "0xBAfC96DbCa5Df5dBd1c9AF5479Fe65bE8FBF9daf",
+            "97": "0x4d8cc6926abc32fC8bfD33428748795441618e2A"
+        },
+        "token": "##tokens.mdx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 16,
+        "lpSymbol": "SAFEMARS-USDT LP",
+        "lpAddresses": {
+            "56": "0xd3618eedc97CE2f2cCc5db6ee36C9D2f9E6Afd8d",
+            "97": "0x291B000B56A75Ee6f1430F2B72bF7e91e7989BB5"
+        },
+        "token": "##tokens.safemars##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 17,
+        "lpSymbol": "SHIB-USDT LP",
+        "lpAddresses": {
+            "56": "0x14C594222106283dd6D155b9d00a943b94153066",
+            "97": "0x33474b0E38c9B422DDa9AC51A4c638Ed2eA545f0"
+        },
+        "token": "##tokens.shib##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 18,
+        "lpSymbol": "USDC-USDT LP",
+        "lpAddresses": {
+            "56": "0xcc21b0A9A01fcD2103ff75614480Bd6a07869053",
+            "97": "0x53b1B224EE21FE3E5FcF0d8C4e319EEdd2724fAE"
+        },
+        "token": "##tokens.usdc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 19,
+        "lpSymbol": "ALPACA-USDT LP",
+        "lpAddresses": {
+            "56": "0x4C1c0a05D2B5798bC5e6A93eaF26cf0AD3d4cADb",
+            "97": "0xDf19B1bD7c2b0f7Ba98F795A86d8455A3bE44458"
+        },
+        "token": "##tokens.alpaca##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 20,
+        "lpSymbol": "ELONGATE-USDT LP",
+        "lpAddresses": {
+            "56": "0x19230545BC50178F7D0351C5a641291A1e28e5Cf",
+            "97": "0xE8Ba164FAe868bdC74CaBf6FeA85e3d17d4a15a3"
+        },
+        "token": "##tokens.elongate##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 21,
+        "lpSymbol": "NFTART-USDT LP",
+        "lpAddresses": {
+            "56": "0x3Ca25174AEF339988fdE0EE6Eb076816449A6686",
+            "97": "0x93fc6aeb90117a3E35E07223b9F40960fD226d0D"
+        },
+        "token": "##tokens.nftart##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 22,
+        "lpSymbol": "PIG-USDT LP",
+        "lpAddresses": {
+            "56": "0x88D7923372e0b9E1bA68edDAfE1E3292Ff44eD79",
+            "97": "0x1e89e1AF1d101252Ed9202605fB607a0669EbE37"
+        },
+        "token": "##tokens.pig##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 23,
+        "lpSymbol": "BANANA-USDT LP",
+        "lpAddresses": {
+            "56": "0xB523c355C6E891b5aE0614262Beb31510664C17c",
+            "97": "0x66F6A5b55511240362893EE69cc285A99d229F7b"
+        },
+        "token": "##tokens.banana##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 24,
+        "lpSymbol": "DODO-USDT LP",
+        "lpAddresses": {
+            "56": "0x5c097E2fe8F6b3A481b4dEC6adb1559b68A4CD71",
+            "97": "0xccFAA6193fEBE9d84B029529096eE1A983d3D0ff"
+        },
+        "token": "##tokens.dodo##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 25,
+        "lpSymbol": "PANTHER-USDT LP",
+        "lpAddresses": {
+            "56": "0x570EE9A094DBc25A5d3122AB07DDc99Be385866A",
+            "97": "0x5AD344d7775BC6fd0d819606dF56213a466C7199"
+        },
+        "token": "##tokens.panther##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 26,
+        "lpSymbol": "WEX-USDT LP",
+        "lpAddresses": {
+            "56": "0xEE7D8BE9B9D07331f17e537f4020237A8d2CF9cE",
+            "97": "0x645d46c11Ef289Bc00Ca037FcA83892aEF5Bf91f"
+        },
+        "token": "##tokens.wex##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 27,
+        "lpSymbol": "ASS-USDT LP",
+        "lpAddresses": {
+            "56": "0x387e3161d874dBDaCbc532208Ec5eDaf89882Fab",
+            "97": "0x87A2937dF5180e3739B2f3AC962F5196439455Aa"
+        },
+        "token": "##tokens.ass##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 28,
+        "lpSymbol": "AUTO-USDT LP",
+        "lpAddresses": {
+            "56": "0x009578639884747714d159604189442A48ED80E9",
+            "97": "0x6d545769049FD3Bd7318F113EE134F4261132dD7"
+        },
+        "token": "##tokens.auto##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 29,
+        "lpSymbol": "BONFIRE-USDT LP",
+        "lpAddresses": {
+            "56": "0xb4D0A14830e365774b94857BBA37116E9af354e0",
+            "97": "0xAE4c12899540e12879EDAD2a2C6157bcdf6DA5A4"
+        },
+        "token": "##tokens.bonfire##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 30,
+        "lpSymbol": "DAI-USDT LP",
+        "lpAddresses": {
+            "56": "0xF739D76Fb14f39a5efe6622215384E8d2BD86e23",
+            "97": "0xAE692373B6552dF7A63Bae159874a5074fFceB16"
+        },
+        "token": "##tokens.dai##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 31,
+        "lpSymbol": "GMR-USDT LP",
+        "lpAddresses": {
+            "56": "0xcA16De53e4e218D8205cCf4Aa9FDc5b813890523",
+            "97": "0x4b9a07b5aC4012d96F032896c4648189370ae3dF"
+        },
+        "token": "##tokens.gmr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 32,
+        "lpSymbol": "HELMET-USDT LP",
+        "lpAddresses": {
+            "56": "0xdB4d03b1659fe7FAD33F840de481773A629d256b",
+            "97": "0xAd2816D1abf217D48400840a9fb2f4469eDc3191"
+        },
+        "token": "##tokens.helmet##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 33,
+        "lpSymbol": "JULD-USDT LP",
+        "lpAddresses": {
+            "56": "0xA4c12612602282d2fe064d2aAa45c9bbFB3B3E61",
+            "97": "0x901c1B14A290D08C0D576D59f843E5682AD5796B"
+        },
+        "token": "##tokens.juld##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 34,
+        "lpSymbol": "KABOSU-USDT LP",
+        "lpAddresses": {
+            "56": "0xc21409A01b2bB581fB0F59CC83236b148772cA21",
+            "97": "0xD6D1C378a0f8A42e7453512F70dAc53bf4FaAFb3"
+        },
+        "token": "##tokens.kabosu##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 35,
+        "lpSymbol": "LTRBT-USDT LP",
+        "lpAddresses": {
+            "56": "0x7b4Bb132031864E27Eb66F5159986A30fd274199",
+            "97": "0x7225619d3B900C2A86Bb99B9781901F1527D0CC7"
+        },
+        "token": "##tokens.ltrbt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 36,
+        "lpSymbol": "MEPAD-USDT LP",
+        "lpAddresses": {
+            "56": "0xc5870454a2371C7DcC7b127699e2b0581cb14df6",
+            "97": "0x65Baa948aFc0Bf3584421886Cacaed5C2264A0E4"
+        },
+        "token": "##tokens.mepad##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 37,
+        "lpSymbol": "METAMOON-USDT LP",
+        "lpAddresses": {
+            "56": "0x62fabB2926f1518D3b3a0262D0B3001a9F3981C9",
+            "97": "0x4Dcb2f73FBD71D0765f44DE82345C5224Ba2fc34"
+        },
+        "token": "##tokens.metamoon##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 38,
+        "lpSymbol": "MX-USDT LP",
+        "lpAddresses": {
+            "56": "0xC5536d6C62f353319Da6cb58BbCae1b6D7C4aee9",
+            "97": "0x2C1B36b5aaB531B31E126B2D0F58E8c26851364d"
+        },
+        "token": "##tokens.mx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 39,
+        "lpSymbol": "NRV-USDT LP",
+        "lpAddresses": {
+            "56": "0xAF04318E15157e13E432Fc9a1c725181d8701ade",
+            "97": "0x59A7b3C2b38e51c4E4037294e287aB576f26352f"
+        },
+        "token": "##tokens.nrv##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 40,
+        "lpSymbol": "SAFEPLUTO-USDT LP",
+        "lpAddresses": {
+            "56": "0x626fC38716800fe398254589c3A695308F259D13",
+            "97": "0x350B92aC9Bdf8254B837c3730050bb07c2c2dc42"
+        },
+        "token": "##tokens.safepluto##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 41,
+        "lpSymbol": "VAI-USDT LP",
+        "lpAddresses": {
+            "56": "0x94Fe737506788C07036A3427db5Dee7CAE599897",
+            "97": "0x6CC2A045455f4055Ec69c8ae4AdE49286Fc28Af6"
+        },
+        "token": "##tokens.vai##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 42,
+        "lpSymbol": "XLM-USDT LP",
+        "lpAddresses": {
+            "56": "0xA6c273efA963bDcb09454B40a3d0d4e25AFd8745",
+            "97": "0x032069Db1ED910669040743df268fafcEA297B4D"
+        },
+        "token": "##tokens.xlm##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 43,
+        "lpSymbol": "XVS-USDT LP",
+        "lpAddresses": {
+            "56": "0xCeb8D7CBC783ADE6115cad4686036e694a9B44dD",
+            "97": "0x34d0092F1420d1Ed3d5A00011430D97aa5930C88"
+        },
+        "token": "##tokens.xvs##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 44,
+        "lpSymbol": "1INCH-USDT LP",
+        "lpAddresses": {
+            "56": "0xf85ec97E26F0c63C102722E886866B686F61b5a6",
+            "97": "0xe5B93ecFFCE282aDD347530aC277FC26F0876985"
+        },
+        "token": "##tokens.1inch##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 45,
+        "lpSymbol": "ADA-USDT LP",
+        "lpAddresses": {
+            "56": "0xcb2828964FDa6A0eC8ed1C0b95E73A5eE58CF16A",
+            "97": "0x5D990BFc6fEFD043CD4F26745894Ba371725c281"
+        },
+        "token": "##tokens.ada##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 46,
+        "lpSymbol": "CLU-USDT LP",
+        "lpAddresses": {
+            "56": "0xDfA989d047FAf148831b3043c0a32aA875f0caa7",
+            "97": "0x4f99Bd4FC5F294855F742625BfDE9436C0632DF2"
+        },
+        "token": "##tokens.clu##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 47,
+        "lpSymbol": "CTT-USDT LP",
+        "lpAddresses": {
+            "56": "0xd802476aFdB40Bcc6744d7fddd09618b8F4Ab28D",
+            "97": "0x12ACb1e206267ddE7e1aCEF15763dC0A19886cA9"
+        },
+        "token": "##tokens.ctt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 48,
+        "lpSymbol": "CUMMIES-USDT LP",
+        "lpAddresses": {
+            "56": "0x4018DCFE1D1e8f332f80C279e2F8DcFAD63DFe49",
+            "97": "0x458d1D1259470d4d78F5C30451Fc53406445677B"
+        },
+        "token": "##tokens.cummies##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 49,
+        "lpSymbol": "GLCH-USDT LP",
+        "lpAddresses": {
+            "56": "0x17794610d62b91A7F8d5F5c0A310A5d2ac592bE6",
+            "97": "0x8e1Be7c7666D409a2F96dAd3Fd78f2C383b84bf9"
+        },
+        "token": "##tokens.glch##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 50,
+        "lpSymbol": "REEF-USDT LP",
+        "lpAddresses": {
+            "56": "0x223d8799D341C63210E33Bf7a58C062291394821",
+            "97": "0xef66511103797aCdBEf6F0051013E9B4008957ab"
+        },
+        "token": "##tokens.reef##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 51,
+        "lpSymbol": "SWG-USDT LP",
+        "lpAddresses": {
+            "56": "0xCA6F97E1D8277f329332b328f8eBc088b0Fc8E6d",
+            "97": "0xFAA0447E78234F90aD167146d003b35D9161D3F0"
+        },
+        "token": "##tokens.swg##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 52,
+        "lpSymbol": "TLM-USDT LP",
+        "lpAddresses": {
+            "56": "0xf43b5077D1B15E6B8fBD3565c421ec680657B2cc",
+            "97": "0xC7CD1874B823e705932054bF609E0d7145De34Ba"
+        },
+        "token": "##tokens.tlm##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 53,
+        "lpSymbol": "TPT-USDT LP",
+        "lpAddresses": {
+            "56": "0x9892754b20CF228c19749CE0fC44defA5817bf7f",
+            "97": "0xc88B6c13119775505a002e872F8A36DB83726Ed7"
+        },
+        "token": "##tokens.tpt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 54,
+        "lpSymbol": "WATCH-USDT LP",
+        "lpAddresses": {
+            "56": "0x1033c721208a7bD8A7848126Be55b7dFb7A2FA2A",
+            "97": "0x09172Ce34CAcb778BbD12eB2fA2893b3eE4a62e9"
+        },
+        "token": "##tokens.watch##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 55,
+        "lpSymbol": "YOOSHI-USDT LP",
+        "lpAddresses": {
+            "56": "0x37ADAae64B58FddA7ce10b5f15b7BC038e241c2b",
+            "97": "0x2d2C98cBa9Bed7c9123d4203d9443c23B2EE5DEc"
+        },
+        "token": "##tokens.yooshi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 56,
+        "lpSymbol": "ATOM-USDT LP",
+        "lpAddresses": {
+            "56": "0x42932A3c73DF05586aa5cfD4f3a9a61655c98b45",
+            "97": "0x2679DcB86c8670938bc10690af172e9B0a71026E"
+        },
+        "token": "##tokens.atom##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 57,
+        "lpSymbol": "BFI-USDT LP",
+        "lpAddresses": {
+            "56": "0xaCe381AF37853ae377d1af95862188C1f3dAEE23",
+            "97": "0x202e793B406B1e6480Ebd92D3711502271720661"
+        },
+        "token": "##tokens.bfi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 58,
+        "lpSymbol": "BOG-USDT LP",
+        "lpAddresses": {
+            "56": "0x52780b2c1b27a386E7836FAa2e61a3d113Ab87e1",
+            "97": "0xb7314c2658C8A493Aa497FD5cE4D9Ae42c7BF509"
+        },
+        "token": "##tokens.bog##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 59,
+        "lpSymbol": "BRY-USDT LP",
+        "lpAddresses": {
+            "56": "0x4A8E6062F71b23CF602904321CBf6A0C03535AfA",
+            "97": "0x13Ee0155f9e10B04c451A2e8f3B4256E5Fea13EF"
+        },
+        "token": "##tokens.bry##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 60,
+        "lpSymbol": "BSCX-USDT LP",
+        "lpAddresses": {
+            "56": "0x6bA17eEa4545BA24Eb97E61F517e2B3B1ad85580",
+            "97": "0xb13d736c979bE7e3Ec146034F255CCFB6a88DA2D"
+        },
+        "token": "##tokens.bscx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 61,
+        "lpSymbol": "BTT-USDT LP",
+        "lpAddresses": {
+            "56": "0xF482E205202cB40c2C575ee1a738293a838Edaf5",
+            "97": "0xC0290df1F571B2Cb33aA42ED78DE75E1e6Ef561E"
+        },
+        "token": "##tokens.btt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 62,
+        "lpSymbol": "BURGER-USDT LP",
+        "lpAddresses": {
+            "56": "0x0D8B4821D9e0c7383073a206d16073451CED0096",
+            "97": "0xEa3A7EC89Cd449Cef0e5922091bB5D4328eD5ad8"
+        },
+        "token": "##tokens.burger##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 63,
+        "lpSymbol": "CATE-USDT LP",
+        "lpAddresses": {
+            "56": "0x61408bdA9Ed2470e12bEE4Bcb6648e687C11fa33",
+            "97": "0x2F1bA36cc3c6E6fbF21B6bc9b9F836e25a8876De"
+        },
+        "token": "##tokens.cate##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 64,
+        "lpSymbol": "CHR-USDT LP",
+        "lpAddresses": {
+            "56": "0xA0959BfebA32232831010B6699BC3A9242acf6F9",
+            "97": "0x4e04d4d207d714E79459a41B0747D456c17e889c"
+        },
+        "token": "##tokens.chr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 65,
+        "lpSymbol": "DEGO-USDT LP",
+        "lpAddresses": {
+            "56": "0x2EEaeeA9C3937f0104b5B09499b248E556F5203A",
+            "97": "0x20aFEe6C2414bfdB94F891e73014753EB634Ac09"
+        },
+        "token": "##tokens.dego##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 66,
+        "lpSymbol": "EOS-USDT LP",
+        "lpAddresses": {
+            "56": "0xFf7FE3CCe98901af02Ea8D0d577Dd2EAB831fe50",
+            "97": "0x8f3FE75d1DFC0fCd21E8691F406e8261596B38B8"
+        },
+        "token": "##tokens.eos##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 67,
+        "lpSymbol": "ETC-USDT LP",
+        "lpAddresses": {
+            "56": "0x2c0d74d5389a7076DC76f7084AD333112bA11AE0",
+            "97": "0xb76D7880c7774ec9b4e47B0b53f181206A2125f8"
+        },
+        "token": "##tokens.etc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 68,
+        "lpSymbol": "FFA-USDT LP",
+        "lpAddresses": {
+            "56": "0x56d4ed22869580295Fd05516281056f5719800EE",
+            "97": "0xa924f9F8280b1cBe2C36ad1a39F83877a6D9Dd3F"
+        },
+        "token": "##tokens.ffa##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 69,
+        "lpSymbol": "FIL-USDT LP",
+        "lpAddresses": {
+            "56": "0x5Bd603EB0816d2cF35B927Ded59a53b5A2b18fCA",
+            "97": "0xccF57fFE002577b54c9B5C57e004207d41958AC4"
+        },
+        "token": "##tokens.fil##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 70,
+        "lpSymbol": "FINE-USDT LP",
+        "lpAddresses": {
+            "56": "0xD6D5F4F1EA8AB9d8fBC0e62BFf9AF0fc4cA18E9a",
+            "97": "0x6dC7379091aeA70C9D7cc5b47bE8bc8a4A93bC27"
+        },
+        "token": "##tokens.fine##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 71,
+        "lpSymbol": "FREE-USDT LP",
+        "lpAddresses": {
+            "56": "0x39714Ef33700b327ACDF531Eaf3eB91c59D35AbB",
+            "97": "0x2890f77fC33B739af68851902bECfe8caB2d5173"
+        },
+        "token": "##tokens.free##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 72,
+        "lpSymbol": "HODL-USDT LP",
+        "lpAddresses": {
+            "56": "0x2ed6f6933e558Bf5cF87B8CcFfd29068fc142BB6",
+            "97": "0x4fb03eC2fC798BfDb21E5Bc6c7A09A7250b0Bd9A"
+        },
+        "token": "##tokens.hodl##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 73,
+        "lpSymbol": "HOTCROSS-USDT LP",
+        "lpAddresses": {
+            "56": "0x715905fd62C061d43c4Eb909481ba53cF61634D1",
+            "97": "0x35d93e3345212d156BF1aC7911c307dB523c09bd"
+        },
+        "token": "##tokens.hotcross##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 74,
+        "lpSymbol": "LINK-USDT LP",
+        "lpAddresses": {
+            "56": "0xc71ae603efb29bC8EedD9C9c5323011e167179a2",
+            "97": "0x0a7825FEC03EA3CCE0c337949C310d8e52A37967"
+        },
+        "token": "##tokens.link##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 75,
+        "lpSymbol": "LTC-USDT LP",
+        "lpAddresses": {
+            "56": "0x5E1438281ae353Ca26Fda56F9B2239d66Dbe993a",
+            "97": "0xB4f22331bf076081a511439Fb656DDeDd2650C02"
+        },
+        "token": "##tokens.ltc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 76,
+        "lpSymbol": "NAFT-USDT LP",
+        "lpAddresses": {
+            "56": "0x50f2258eBE5Bc6F1AA109058Da907B13979A5b1a",
+            "97": "0x4bAe2533b35D3EC07004Cf1ce595e34fb90E685c"
+        },
+        "token": "##tokens.naft##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 77,
+        "lpSymbol": "POOCOIN-USDT LP",
+        "lpAddresses": {
+            "56": "0x57bBc467b9ddB15dB12E09187ACDaea63796a5B6",
+            "97": "0x67D029514256a25D8fa1528aB8B5fB8C17D333A2"
+        },
+        "token": "##tokens.poocoin##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 78,
+        "lpSymbol": "SAT-USDT LP",
+        "lpAddresses": {
+            "56": "0x4603385Cf21f2a5999e41474606DAb4c036645Dd",
+            "97": "0x9Ca0538337A09808942977200f9dc6A16bbe2424"
+        },
+        "token": "##tokens.sat##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 79,
+        "lpSymbol": "SXP-USDT LP",
+        "lpAddresses": {
+            "56": "0x16feBEF2f837593E2A3a5b9D2A3D05b3f7A1Fe24",
+            "97": "0x1995B6E1bf6d842935772672b10056e7a33a58Ca"
+        },
+        "token": "##tokens.sxp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 80,
+        "lpSymbol": "TKO-USDT LP",
+        "lpAddresses": {
+            "56": "0x5A6c9B51d30D200F6d47bff08A54084169a84Fd8",
+            "97": "0x25D05534d2D9831B48E345108071Aa512be0A2e8"
+        },
+        "token": "##tokens.tko##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 81,
+        "lpSymbol": "TPAD-USDT LP",
+        "lpAddresses": {
+            "56": "0xEA6C428792d898F2fdF63beAaDa67b7b6d5C6FBD",
+            "97": "0x393F82ad7d85c105217ADd93b97a8307877668fE"
+        },
+        "token": "##tokens.tpad##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 82,
+        "lpSymbol": "TRX-USDT LP",
+        "lpAddresses": {
+            "56": "0x7590aBEE09d9336a8981F1ceD64d7165cCdFD15e",
+            "97": "0x09d163cb02299857620df61ca78B0c86761B48Fa"
+        },
+        "token": "##tokens.trx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 83,
+        "lpSymbol": "ULTRA-USDT LP",
+        "lpAddresses": {
+            "56": "0x3437FAE6bbe348E092bB1DE2a245b672a94bD6E5",
+            "97": "0xed28D3828BBB8a6A497551EFF1b44E22cDdEFdA5"
+        },
+        "token": "##tokens.ultra##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 84,
+        "lpSymbol": "UNI-USDT LP",
+        "lpAddresses": {
+            "56": "0xF64F76431a23c82490D012790B40252c5Cf12A19",
+            "97": "0x4eF549Dd9E97d14462Aec8eE2bE8D05b0C13E67E"
+        },
+        "token": "##tokens.uni##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 85,
+        "lpSymbol": "VIDT-USDT LP",
+        "lpAddresses": {
+            "56": "0x5109e7fB328FCa2BB1993BC8352B93E94f050DBf",
+            "97": "0xDb13f59117878961993417a585137908722f830b"
+        },
+        "token": "##tokens.vidt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 86,
+        "lpSymbol": "WSB-USDT LP",
+        "lpAddresses": {
+            "56": "0x951bd0BcCa60Cd00B006EF3B394f0967858A6889",
+            "97": "0xACF159d10f8F6877652FF7785c0f7ec2bcBc2Af3"
+        },
+        "token": "##tokens.wsb##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 87,
+        "lpSymbol": "X-TOKEN-USDT LP",
+        "lpAddresses": {
+            "56": "0xac784E2cbe1642A8FEbf9c555dC78efEFf840929",
+            "97": "0x2122C68F180E445c154e4e4092A37e6Bd667C31A"
+        },
+        "token": "##tokens.x-token##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 88,
+        "lpSymbol": "XPOSE-USDT LP",
+        "lpAddresses": {
+            "56": "0x93c1C48dA4B42a2697B33143a63e613FeD04Eae7",
+            "97": "0xD76E5296a00749a9bc41F7cac6dc75365d03520c"
+        },
+        "token": "##tokens.xpose##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 89,
+        "lpSymbol": "XRP-USDT LP",
+        "lpAddresses": {
+            "56": "0x14a07c28138c75c3B7253bC50fd077aa405A2A48",
+            "97": "0xcA9dac8CfF82B808B53dcf7fa3914163a23F4eeD"
+        },
+        "token": "##tokens.xrp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 90,
+        "lpSymbol": "YUMMY-USDT LP",
+        "lpAddresses": {
+            "56": "0x738F087DDCd98784B858D12058053dFDb5bF2137",
+            "97": "0xf7776B2DE472B512305f3D5E632A676A2Ee1f4Bc"
+        },
+        "token": "##tokens.yummy##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 91,
+        "lpSymbol": "CHIBI-USDT LP",
+        "lpAddresses": {
+            "56": "0x2CD846A5f2fABb30C8c4Ae363cdA0eEb942B39e9",
+            "97": "0x8c3B6A3d80A8d502fB3e8ac0da410FC52d8889a6"
+        },
+        "token": "##tokens.chibi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 92,
+        "lpSymbol": "MOONSHOT-USDT LP",
+        "lpAddresses": {
+            "56": "0x29cf06CEa6B6BF55C1b0Cdf0fC0B28663d7F9C8D",
+            "97": "0x6Bf0bF4f0B8B6633A371463E44cfA9241362ab5A"
+        },
+        "token": "##tokens.moonshot##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 93,
+        "lpSymbol": "PARA-USDT LP",
+        "lpAddresses": {
+            "56": "0x2F400F0D36Aa81C48cE9509F0489502AA7C89836",
+            "97": "0xb5A685fdb0b157Baa583FF37d6C975DA8E218d99"
+        },
+        "token": "##tokens.para##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 94,
+        "lpSymbol": "PEG-USDT LP",
+        "lpAddresses": {
+            "56": "0xfd0e1b4d1c529FeA66B5fd63400E008e2C7327B1",
+            "97": "0x4253928c8403DcC1Fa3D592c581131B0844fa51c"
+        },
+        "token": "##tokens.peg##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 95,
+        "lpSymbol": "SVT-USDT LP",
+        "lpAddresses": {
+            "56": "0xf7E0ED4Cd174C3911Aa151FCC51E137bDCF1D59B",
+            "97": "0x43F256D1C28936845664Fc0740218da38a34D59d"
+        },
+        "token": "##tokens.svt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 96,
+        "lpSymbol": "ALICE-USDT LP",
+        "lpAddresses": {
+            "56": "0x2DEE98A03519e7D25E973F2B4ED52D6AbAD5e341",
+            "97": "0x58eFC0426aD9284724063b4845c5F0F4984e31bB"
+        },
+        "token": "##tokens.alice##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 97,
+        "lpSymbol": "BCH-USDT LP",
+        "lpAddresses": {
+            "56": "0xC5Fa30C6A2dC5172DD606786A1F1231DE02539A2",
+            "97": "0x4DD2d5EC47838C9F399332F818D939be77F865F2"
+        },
+        "token": "##tokens.bch##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 98,
+        "lpSymbol": "BDO-USDT LP",
+        "lpAddresses": {
+            "56": "0x00Af70489De078122484F4DE9959d3888a0FBdb5",
+            "97": "0xBa1712280Ad658d9E087c0ce633113df7E819921"
+        },
+        "token": "##tokens.bdo##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 99,
+        "lpSymbol": "BELT-USDT LP",
+        "lpAddresses": {
+            "56": "0x50FdB0bC5b0D3d5C59945eE7dA473ff12AC63417",
+            "97": "0xEA9878220D63d8aca177cdfFBa40085DA12189E4"
+        },
+        "token": "##tokens.belt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 100,
+        "lpSymbol": "BLK-USDT LP",
+        "lpAddresses": {
+            "56": "0x5637DA12b80D00Cf17d6BCf8bBdCa03d428dFd43",
+            "97": "0x728E2F54d6155242a8e603e99aE989546ff44C62"
+        },
+        "token": "##tokens.blk##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 101,
+        "lpSymbol": "BSCPAD-USDT LP",
+        "lpAddresses": {
+            "56": "0x8c877D831175193505ACefcF03582ae9d863dcE2",
+            "97": "0x2bEd7416bA013d1c393e568982222e12A6f274eD"
+        },
+        "token": "##tokens.bscpad##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 102,
+        "lpSymbol": "BSCS-USDT LP",
+        "lpAddresses": {
+            "56": "0xB10E6EbD242d77976c35145DCC2c43BB7Ff17bd4",
+            "97": "0x40EB779Fb17aDE906684E174CA6EAB1aF409B147"
+        },
+        "token": "##tokens.bscs##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 103,
+        "lpSymbol": "BTCST-USDT LP",
+        "lpAddresses": {
+            "56": "0xA8b862B50F504656CEd8283673A2fAAE6651b0D2",
+            "97": "0x7e3fd3971702c5A6A16dC12AdF3AB267814BF81E"
+        },
+        "token": "##tokens.btcst##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 104,
+        "lpSymbol": "BUX-USDT LP",
+        "lpAddresses": {
+            "56": "0xD165241b048eC90E944F8760f70Ce9acB67D4792",
+            "97": "0x387b44Fa56B5Ea5f82fca443aE268348A3Bf8e95"
+        },
+        "token": "##tokens.bux##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 105,
+        "lpSymbol": "COCOS-USDT LP",
+        "lpAddresses": {
+            "56": "0x436d348381B97a2E2D0fD2B120b7dAC946A71fAB",
+            "97": "0xDa9da91e2Fe92768206124028F5132Dd820Cb2E9"
+        },
+        "token": "##tokens.cocos##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 106,
+        "lpSymbol": "CWS-USDT LP",
+        "lpAddresses": {
+            "56": "0xc1F3318790f43221C5e96F5E3EFB12Cf9c224393",
+            "97": "0xDb2a8b6AEF5ee879CE69cAeE0160465Be42ab455"
+        },
+        "token": "##tokens.cws##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 107,
+        "lpSymbol": "DOGGY-USDT LP",
+        "lpAddresses": {
+            "56": "0x6dD9C088B674d0E379C0FdC141E0e4Be1954c1bF",
+            "97": "0x5eaF56a4E6b6B99ADda8A4f1716A33444Ed61C05"
+        },
+        "token": "##tokens.doggy##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 108,
+        "lpSymbol": "DOP-USDT LP",
+        "lpAddresses": {
+            "56": "0x512A435dB69e952Ad12101FbBBDe378786f1A30A",
+            "97": "0x5EE67D30C8f9113145B89bA6453F44B6e3123d94"
+        },
+        "token": "##tokens.dop##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 109,
+        "lpSymbol": "EGLD-USDT LP",
+        "lpAddresses": {
+            "56": "0x93Aa60DccC7e6141794a60910e125A02acBf8aE0",
+            "97": "0xbB09a09012eaE5bB97d0E153ce633A1b3be749D0"
+        },
+        "token": "##tokens.egld##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 110,
+        "lpSymbol": "ELE-USDT LP",
+        "lpAddresses": {
+            "56": "0x1B6b5b8180EE5F0069876B179E560077C6387F7F",
+            "97": "0x05F599137bEDfe9c34E77752495B3a008F0E534D"
+        },
+        "token": "##tokens.ele##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 111,
+        "lpSymbol": "EPS-USDT LP",
+        "lpAddresses": {
+            "56": "0x529F855026F3e46734b464b187b12ddac4A7B41b",
+            "97": "0xCc469736ADE62215c796287D5DaE6Ae9b9a83001"
+        },
+        "token": "##tokens.eps##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 112,
+        "lpSymbol": "FOX-USDT LP",
+        "lpAddresses": {
+            "56": "0x3b9aB37591fAA080E4c8Acf7c07918d79cD2EDcE",
+            "97": "0xD154949dD3bb9eC27215E2C07c4755e3cC1FDC64"
+        },
+        "token": "##tokens.fox##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 113,
+        "lpSymbol": "FTS-USDT LP",
+        "lpAddresses": {
+            "56": "0x6F5AD2dD5401A6F90DF5320CF62f8A09b44daDca",
+            "97": "0xa13739469f883Abe2B9B4Bd3C9AA08F91012ff0a"
+        },
+        "token": "##tokens.fts##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 114,
+        "lpSymbol": "HOME-USDT LP",
+        "lpAddresses": {
+            "56": "0x9E347F082671fAA33e7467ECBA8eE81b45fF40bE",
+            "97": "0x1Bf3dEbE56B5bfAb6eB2899ED849427a6129FeC8"
+        },
+        "token": "##tokens.home##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 115,
+        "lpSymbol": "INJ-USDT LP",
+        "lpAddresses": {
+            "56": "0xd5DF2187C5B8d4ee6581352BBA699c327F4F8374",
+            "97": "0x498d3Cc9E728ca2654fC516afDF1F9c86Eabe208"
+        },
+        "token": "##tokens.inj##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 116,
+        "lpSymbol": "KNOCKERS-USDT LP",
+        "lpAddresses": {
+            "56": "0x981E851EE0F104E888E5b7E11eE452321817Ac99",
+            "97": "0xA9013E44f3e2c573E206A77E6b1DdD4129d298C2"
+        },
+        "token": "##tokens.knockers##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 117,
+        "lpSymbol": "KSM-USDT LP",
+        "lpAddresses": {
+            "56": "0x18ee2af3E2D645d09C2B6e08b3651916a07a4A28",
+            "97": "0x25a0C7e36128EB9B4497f872a360fcB89C4d3507"
+        },
+        "token": "##tokens.ksm##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 118,
+        "lpSymbol": "LINA-USDT LP",
+        "lpAddresses": {
+            "56": "0x811b72c40D24b4e4e292Bf74B1aE4FaE620BC14D",
+            "97": "0x253cF87665A896d5B3f886369Ebfee240c8725F9"
+        },
+        "token": "##tokens.lina##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 119,
+        "lpSymbol": "LPOOL-USDT LP",
+        "lpAddresses": {
+            "56": "0x6812F1D22658d4e3Bda23E35A68dBF759709804F",
+            "97": "0x35F2BC2F06cA871C8e0f5051ea70a8e383E25F82"
+        },
+        "token": "##tokens.lpool##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 120,
+        "lpSymbol": "MBOX-USDT LP",
+        "lpAddresses": {
+            "56": "0x04316C9178C3F2192d050d79D872B79B6D790A6B",
+            "97": "0x5d5CD3bB41147C26985B45b3183DEC6cB7c9D049"
+        },
+        "token": "##tokens.mbox##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 121,
+        "lpSymbol": "MERL-USDT LP",
+        "lpAddresses": {
+            "56": "0x32ACF9fdAbC0B64E20957a0a0790e7a9B0bAfB83",
+            "97": "0xd4877512459310814Fe293b7318477B1a75dCD54"
+        },
+        "token": "##tokens.merl##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 122,
+        "lpSymbol": "ORK-USDT LP",
+        "lpAddresses": {
+            "56": "0x87273C078c32ac522e402CEd5bC609F41BDB0a0D",
+            "97": "0x76cCFb4a821F8D9CB37d6eD3d52a1a01eA192b8C"
+        },
+        "token": "##tokens.ork##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 123,
+        "lpSymbol": "OXB-USDT LP",
+        "lpAddresses": {
+            "56": "0x06D08B4790467bb92daFc589fa9d885FBb2a413E",
+            "97": "0x6F3BC3839CeD977c44b6ad267A8aB69710FD9A53"
+        },
+        "token": "##tokens.oxb##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 124,
+        "lpSymbol": "REAU-USDT LP",
+        "lpAddresses": {
+            "56": "0xd5EF64bBb21eaC1Db8801981ca2940c58311Ad12",
+            "97": "0x5fdA98Fdc7F63751C6842F478Dd198F818C4c794"
+        },
+        "token": "##tokens.reau##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 125,
+        "lpSymbol": "RICH-USDT LP",
+        "lpAddresses": {
+            "56": "0x3B1F16b6a42ccf62c3b2c044724816Ac3D94af88",
+            "97": "0x886bdBAecAdC9787dBC9090c7eDFFCF2A719e112"
+        },
+        "token": "##tokens.rich##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 126,
+        "lpSymbol": "SAFEBTC-USDT LP",
+        "lpAddresses": {
+            "56": "0xCD8F22114c55c61Ca1e0E1Ad4c83CD2cC68b652d",
+            "97": "0x79091dD685b67EEf068F56F36ec956e1B402a67f"
+        },
+        "token": "##tokens.safebtc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 127,
+        "lpSymbol": "SFUND-USDT LP",
+        "lpAddresses": {
+            "56": "0xeD1f2962109DFe4C91cbCc6229d108e7E19De9b5",
+            "97": "0x1a924E8d8f73d9766edf601C4632CA31f3f8C8Ba"
+        },
+        "token": "##tokens.sfund##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 128,
+        "lpSymbol": "SUSHI-USDT LP",
+        "lpAddresses": {
+            "56": "0xf608E1f3a3480f578f88E87FDBD60ca4D9f941E5",
+            "97": "0xA95C317160ABDb2566267DEe2A32D573CfC6aA44"
+        },
+        "token": "##tokens.sushi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 129,
+        "lpSymbol": "SWAMP-USDT LP",
+        "lpAddresses": {
+            "56": "0xB1a37030582B04c156A0793CE3903dAf0aBb87Fa",
+            "97": "0x43bB61F9F4EE1734555434586d6184a18A84Fcf9"
+        },
+        "token": "##tokens.swamp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 130,
+        "lpSymbol": "TCT-USDT LP",
+        "lpAddresses": {
+            "56": "0x37BC3A716FCb8F1DA2270F4847D22d900Dde4e99",
+            "97": "0x414e15eEF7F3Fc28c0Ca71c13647E5B50908f7c9"
+        },
+        "token": "##tokens.tct##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 131,
+        "lpSymbol": "TRDG-USDT LP",
+        "lpAddresses": {
+            "56": "0x04e940883D72C01eF58c517a92c771212DB85946",
+            "97": "0x733da181304BCAFCE3447217bA865EDCFb69D491"
+        },
+        "token": "##tokens.trdg##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 132,
+        "lpSymbol": "UST-USDT LP",
+        "lpAddresses": {
+            "56": "0xd7E7181354e7e69ED84ce7B44AE4E93Be6C96EeD",
+            "97": "0x86a86549a5E4b8994d33fAd3b263654519aa9DeA"
+        },
+        "token": "##tokens.ust##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 133,
+        "lpSymbol": "VANCAT-USDT LP",
+        "lpAddresses": {
+            "56": "0x4282F825dA3C76948aEAD58C5A8A6EFD5a24F22f",
+            "97": "0x6829A94Ff23368Bd796F607be5757D65386E7d20"
+        },
+        "token": "##tokens.vancat##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 134,
+        "lpSymbol": "WOOP-USDT LP",
+        "lpAddresses": {
+            "56": "0x6510AFD891776b51d366872240c4Fe9A705A4f34",
+            "97": "0x1543284695Ed999f968a305209d89A2DD5e0728D"
+        },
+        "token": "##tokens.woop##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 135,
+        "lpSymbol": "WSOTE-USDT LP",
+        "lpAddresses": {
+            "56": "0xCbeA1bc8DCDFe33c6895578E74BB0A2658Dc6D5d",
+            "97": "0x7Bd1c48dD01d53Bcf2216445C9E7415c878d1cfe"
+        },
+        "token": "##tokens.wsote##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 136,
+        "lpSymbol": "ZEE-USDT LP",
+        "lpAddresses": {
+            "56": "0x17DacD37Da71Ab8FBB7dA63e6f83C8caF9ffa0e8",
+            "97": "0xE090ba87702b4149282d74c97077425438d58Ce4"
+        },
+        "token": "##tokens.zee##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 137,
+        "lpSymbol": "ZIL-USDT LP",
+        "lpAddresses": {
+            "56": "0xDB2C56b6eE276e53295F1B475CD281b332Bc2F62",
+            "97": "0xC6B57956B15B8d5bF7Ea6e6F0d592b0FC3BDDFf0"
+        },
+        "token": "##tokens.zil##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 138,
+        "lpSymbol": "ALPHA-USDT LP",
+        "lpAddresses": {
+            "56": "0x5f915a35BeAc8d596774E89758bE73A0E2209909",
+            "97": "0x660Fc1366854cD50130E96a4d91674658C55c247"
+        },
+        "token": "##tokens.alpha##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 139,
+        "lpSymbol": "ANKR-USDT LP",
+        "lpAddresses": {
+            "56": "0xd2afCEB3183Fa936fC0a6C0E29275737d0dE7E37",
+            "97": "0x31D62D541832dC6aea9F963d9Fd336075b70a65b"
+        },
+        "token": "##tokens.ankr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 140,
+        "lpSymbol": "ASR-USDT LP",
+        "lpAddresses": {
+            "56": "0x72C512441F14c1b43d51e2d92074A3120caD761b",
+            "97": "0x5b3F264e701ec3eAFFE562C2ff6b1d8125A3f6e6"
+        },
+        "token": "##tokens.asr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 141,
+        "lpSymbol": "ATM-USDT LP",
+        "lpAddresses": {
+            "56": "0xD082979199045aac595e3b509C87490bB4bC1e13",
+            "97": "0x36FFC880D528cae896De19894171A33a15c97116"
+        },
+        "token": "##tokens.atm##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 142,
+        "lpSymbol": "BIFI-USDT LP",
+        "lpAddresses": {
+            "56": "0x3ea3b48b60930bFbB776d741ffb7B815c4B4c509",
+            "97": "0xf22B4F900B8117a93E32671817aE5DE05C7a6Fa4"
+        },
+        "token": "##tokens.bifi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 143,
+        "lpSymbol": "bROOBEE-USDT LP",
+        "lpAddresses": {
+            "56": "0x4D68531D6169ca558a60962c1728cd5893B5bDc6",
+            "97": "0xA960e5a8a9e82c715C202f47A4B7324ad400035F"
+        },
+        "token": "##tokens.broobee##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 144,
+        "lpSymbol": "COMP-USDT LP",
+        "lpAddresses": {
+            "56": "0x214bFEbbB0c57ee0e7fB68De46A9ea7904187b98",
+            "97": "0x545fBCD3Ea75B0772Cfbf550aA7E2a5c913c05B7"
+        },
+        "token": "##tokens.comp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 145,
+        "lpSymbol": "HZN-USDT LP",
+        "lpAddresses": {
+            "56": "0x1c2d0595Bb286fC1B2965f10BD83674A22A44F3d",
+            "97": "0xF8db4fc622617054DEB4b0B034a0Ca726c44f5e7"
+        },
+        "token": "##tokens.hzn##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 146,
+        "lpSymbol": "JGN-USDT LP",
+        "lpAddresses": {
+            "56": "0xDd7a6A96d02DA6f9f0b0E40739278108a6c5F58E",
+            "97": "0xEF63c118081E7F55a00611A4a2CfB48abfF421dE"
+        },
+        "token": "##tokens.jgn##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 147,
+        "lpSymbol": "KUN-USDT LP",
+        "lpAddresses": {
+            "56": "0x891Ffd24c851f4b0843aEFF7211559C0eD3849A1",
+            "97": "0xF344793B3e5fAaC4c359DEC8484C89B3F4dEB2C0"
+        },
+        "token": "##tokens.kun##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 148,
+        "lpSymbol": "LIT-USDT LP",
+        "lpAddresses": {
+            "56": "0x645067bB124BFBFf6d1186c05E099eE1D3e2db5d",
+            "97": "0xaa7a485a88629D0ed8b1a921fad270358e03DA9A"
+        },
+        "token": "##tokens.lit##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 149,
+        "lpSymbol": "LNCHX-USDT LP",
+        "lpAddresses": {
+            "56": "0xb12bc764aB94349060De0FcA99583b47823BfD3c",
+            "97": "0xECce73e0538c3C4Cf32f4a580F6a116e533BD305"
+        },
+        "token": "##tokens.lnchx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 150,
+        "lpSymbol": "MOONTOKEN-USDT LP",
+        "lpAddresses": {
+            "56": "0xEA2dd23565A6Da6b8908f8b26A0Fb05C0E1007AC",
+            "97": "0x479781f38199cEa23a9f96C5fDE09dB3d11Be207"
+        },
+        "token": "##tokens.moontoken##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 151,
+        "lpSymbol": "OG-USDT LP",
+        "lpAddresses": {
+            "56": "0x069320D7f214E5172aa02e4b8F17768F8129B50b",
+            "97": "0x57D7D6E30c5f18c0A4619A6337B8B51E4fbcE8ae"
+        },
+        "token": "##tokens.og##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 152,
+        "lpSymbol": "PSG-USDT LP",
+        "lpAddresses": {
+            "56": "0x323aC013D45Ce14d2CCCD8F81690E958cb801BFE",
+            "97": "0x3429E2A570e187eb1af471F31d2B24aF849CeA42"
+        },
+        "token": "##tokens.psg##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 153,
+        "lpSymbol": "RAMP-USDT LP",
+        "lpAddresses": {
+            "56": "0x82c0533A71fD06F8cE1CfB8005348574394b67b2",
+            "97": "0x8110eeAf5B128F3E19Cd6378Fb252d1b63E797F2"
+        },
+        "token": "##tokens.ramp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 154,
+        "lpSymbol": "SBDO-USDT LP",
+        "lpAddresses": {
+            "56": "0xc0B41Fa7a217083caF8fEA973024AA3c9D7f93D6",
+            "97": "0xac1492EEDD51f74A1dDF8033F3dE2c66e1102504"
+        },
+        "token": "##tokens.sbdo##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 155,
+        "lpSymbol": "UNFI-USDT LP",
+        "lpAddresses": {
+            "56": "0xCD6A6040cd41741a5e330584559FA5315c625972",
+            "97": "0xE95176e167967fCCBF3E0d3618F1476446Ae1369"
+        },
+        "token": "##tokens.unfi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 156,
+        "lpSymbol": "WIN-USDT LP",
+        "lpAddresses": {
+            "56": "0x16DC8284607BB8B0e3A709e4fA4A2e1ea8368FBC",
+            "97": "0x4542BD8D188f2b1bd04295111CD6cD91DDcDA078"
+        },
+        "token": "##tokens.win##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 157,
+        "lpSymbol": "AAVE-USDT LP",
+        "lpAddresses": {
+            "56": "0xd75e61F069e812D7a28caB0A82a0999316D9Ec52",
+            "97": "0xb0D9F8aF818F4407995C7878B683bA2469b7eD0E"
+        },
+        "token": "##tokens.aave##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 158,
+        "lpSymbol": "ARPA-USDT LP",
+        "lpAddresses": {
+            "56": "0x24CF7deAcA9AeE96F91CA19A5893244057887415",
+            "97": "0x8EE463824dc1E7dA9d9dE9070Ab25163528E2D6e"
+        },
+        "token": "##tokens.arpa##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 159,
+        "lpSymbol": "AUCTION-USDT LP",
+        "lpAddresses": {
+            "56": "0x3a240ec0C8F178d79fE80478C3F10A9A98b800D8",
+            "97": "0xe6752083ee48fa59edCc85B195BCDcFF9e4B794A"
+        },
+        "token": "##tokens.auction##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 160,
+        "lpSymbol": "AVAX-USDT LP",
+        "lpAddresses": {
+            "56": "0xA08c7DC7d632f2a0190F502aBA2F7ed3F9BdB9bf",
+            "97": "0x9BADE325299fAEF8b31baa6952cF3343Eb0B790a"
+        },
+        "token": "##tokens.avax##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 161,
+        "lpSymbol": "BAND-USDT LP",
+        "lpAddresses": {
+            "56": "0x1DA58Ef1769360A6fCcF450E821bfe53257D3Ab5",
+            "97": "0xEe63342aDae57129f7402C17F07D312225BDBcB4"
+        },
+        "token": "##tokens.band##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 162,
+        "lpSymbol": "BAT-USDT LP",
+        "lpAddresses": {
+            "56": "0x402B1800E5eD3cF65e096522fAEBf5e2de21a825",
+            "97": "0xb479F618798E3178E2EbfCde5b4F8c6Af4e8ad2d"
+        },
+        "token": "##tokens.bat##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 163,
+        "lpSymbol": "BEL-USDT LP",
+        "lpAddresses": {
+            "56": "0x70B8390da70db543061f607f3789793bdEdD3B56",
+            "97": "0x2c3Eb78D259F54CD4E9896229Ce1DE0719c9DfE3"
+        },
+        "token": "##tokens.bel##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 164,
+        "lpSymbol": "BETH-USDT LP",
+        "lpAddresses": {
+            "56": "0xe8a912b02397c4e04f4049DF26A9dC2d452925C7",
+            "97": "0xA8f82744e172D6c3cb4Cfaee0309db6c33FB178d"
+        },
+        "token": "##tokens.beth##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 165,
+        "lpSymbol": "bMXX-USDT LP",
+        "lpAddresses": {
+            "56": "0x4fe9Bec50168A747aF469532Bfda10404A98475e",
+            "97": "0xf1BFd015bd81080737E4B146e0313947b8989991"
+        },
+        "token": "##tokens.bmxx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 166,
+        "lpSymbol": "BONDLY-USDT LP",
+        "lpAddresses": {
+            "56": "0x9B4D1615912C9a43793D904913fF7Db6ee392c71",
+            "97": "0x3254fdF438C8b947470D9b8aa554EC6592a7009D"
+        },
+        "token": "##tokens.bondly##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 167,
+        "lpSymbol": "BOR-USDT LP",
+        "lpAddresses": {
+            "56": "0xD9b20c0553b8995b5cF9Fcd06e75e4c7545dF6e6",
+            "97": "0xE2fB2C22198388a8236a38E267f0D9f76164Bf47"
+        },
+        "token": "##tokens.bor##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 168,
+        "lpSymbol": "BP-USDT LP",
+        "lpAddresses": {
+            "56": "0x85912F57327E583A501E45d020A056d428C72fCa",
+            "97": "0xB289a407B22508A7A000D0cA881cd2CCa541CC71"
+        },
+        "token": "##tokens.bp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 169,
+        "lpSymbol": "BZRX-USDT LP",
+        "lpAddresses": {
+            "56": "0x46C02a57f70fb8a4e6433A18D75074942d95BC18",
+            "97": "0x0f40c7982076954CE907567fe3EfBB51ca8Cd5cf"
+        },
+        "token": "##tokens.bzrx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 170,
+        "lpSymbol": "CELR-USDT LP",
+        "lpAddresses": {
+            "56": "0x77C653BbF13306525d62368213977ad6d5D0bFBF",
+            "97": "0x006FD3754ebe1a336cf75A1B47410A56B5362884"
+        },
+        "token": "##tokens.celr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 171,
+        "lpSymbol": "CFX-USDT LP",
+        "lpAddresses": {
+            "56": "0x8AB666AF79Ae53974D25d15A6E19A7C4536136E7",
+            "97": "0xcB86eaf682e654710a4A6F28b7e2CA416524310a"
+        },
+        "token": "##tokens.cfx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 172,
+        "lpSymbol": "CHAD-USDT LP",
+        "lpAddresses": {
+            "56": "0x19cBC330Bb770fEBBB602605fc13f3e058aeF10d",
+            "97": "0x6eff033F1491C5C1AC93809928356Fb274C11C3B"
+        },
+        "token": "##tokens.chad##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 173,
+        "lpSymbol": "CHANGE-USDT LP",
+        "lpAddresses": {
+            "56": "0x6cd72D40E1a2B83B1EedD3B9d9500C65EfF23fb3",
+            "97": "0x143c6E0BdB7A9d218b3BA55d969c3D2727549667"
+        },
+        "token": "##tokens.change##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 174,
+        "lpSymbol": "COS-USDT LP",
+        "lpAddresses": {
+            "56": "0x35941d68A1f09c075904b4B0606C7667De235DCa",
+            "97": "0x32f86ed496000188711A12a8a0284dC4d3E52350"
+        },
+        "token": "##tokens.cos##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 175,
+        "lpSymbol": "COTI-USDT LP",
+        "lpAddresses": {
+            "56": "0x0acd0d7638B70Bd580321FAA5172dB03f9848065",
+            "97": "0xf6851eD2C60378Fe68E5df7136D909250CEaA6B7"
+        },
+        "token": "##tokens.coti##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 176,
+        "lpSymbol": "CREAM-USDT LP",
+        "lpAddresses": {
+            "56": "0xb9cf20e630faC29C7f140A9006c082fc685f1815",
+            "97": "0x4C4e8115b5AA11AC759De33f4297c56EB0FfDCea"
+        },
+        "token": "##tokens.cream##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 177,
+        "lpSymbol": "CTK-USDT LP",
+        "lpAddresses": {
+            "56": "0x7dA21b2913B967DCce2a35555994d010aa06d468",
+            "97": "0xd5B3bF4E248d0f566Bce08e3c4eab027971D5628"
+        },
+        "token": "##tokens.ctk##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 178,
+        "lpSymbol": "CTSI-USDT LP",
+        "lpAddresses": {
+            "56": "0xa5a1b34204706666F63aE6c7b81174246D23Ff0e",
+            "97": "0x18838716dC32EC9a69f05FcDF8C274bA37c4888d"
+        },
+        "token": "##tokens.ctsi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 179,
+        "lpSymbol": "CYC-USDT LP",
+        "lpAddresses": {
+            "56": "0x04C705c20e6eFb2B20fb8f3c9CD642C7CBBc7dCB",
+            "97": "0xf924c1F81867384322d33e1D12a337080DA81156"
+        },
+        "token": "##tokens.cyc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 180,
+        "lpSymbol": "DCH-USDT LP",
+        "lpAddresses": {
+            "56": "0xf9F0Bf63842Bb939edB20eFBb52c14E02A758F96",
+            "97": "0x7324EeDE67Bc6b35c911D371C80Bc7Cd6f361D21"
+        },
+        "token": "##tokens.dch##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 181,
+        "lpSymbol": "DERI-USDT LP",
+        "lpAddresses": {
+            "56": "0xcD5D7c2d47105830a699dC185CF4Ebf10e204AaA",
+            "97": "0x330180E767c7697c766E869c23B48C539F4Aee2C"
+        },
+        "token": "##tokens.deri##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 182,
+        "lpSymbol": "DEXE-USDT LP",
+        "lpAddresses": {
+            "56": "0x0edabDdaAAba6F4f544073974b4b8DaC4783b081",
+            "97": "0xDF0c2b3910d4d67830371f08b6a24BaC9D4D0a16"
+        },
+        "token": "##tokens.dexe##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 183,
+        "lpSymbol": "DFD-USDT LP",
+        "lpAddresses": {
+            "56": "0xC5E6C8C1411Fe0d9325c20f32A852a170f8b6715",
+            "97": "0x051F7D782903FAd1C1a79FD2e5142CDba991896f"
+        },
+        "token": "##tokens.dfd##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 184,
+        "lpSymbol": "DFT-USDT LP",
+        "lpAddresses": {
+            "56": "0xc94f3707b902f841cbCa417920Ddd8A24A93bAbB",
+            "97": "0x70dC51efE4Ae362839363EF34BDF1bB4D8Dc1687"
+        },
+        "token": "##tokens.dft##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 185,
+        "lpSymbol": "DITTO-USDT LP",
+        "lpAddresses": {
+            "56": "0x99E0c03F59A0454AFdA6c3AAC645BA40d3655c48",
+            "97": "0x4Ac8933C861705Ee0F5d6D55b8922211422557a5"
+        },
+        "token": "##tokens.ditto##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 186,
+        "lpSymbol": "DUSK-USDT LP",
+        "lpAddresses": {
+            "56": "0x676813340b9eB4BC1266064A0Ce6F5519BE0575C",
+            "97": "0x51F78d9E2568e071FC3e39030A9a9FE29003886d"
+        },
+        "token": "##tokens.dusk##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 187,
+        "lpSymbol": "EARNX-USDT LP",
+        "lpAddresses": {
+            "56": "0x22f9E64eABE17cC38A00765acc2ED5D00353763B",
+            "97": "0x3D5B60f1735d12F8b37E9B1a8567Ed113b041633"
+        },
+        "token": "##tokens.earnx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 188,
+        "lpSymbol": "ECP-USDT LP",
+        "lpAddresses": {
+            "56": "0xA548882fF0EC2eD7147C8E338C86c9A9082E05EB",
+            "97": "0x0b0A4FfE94Cf19B9B57bffD2067ece9f72a09dF1"
+        },
+        "token": "##tokens.ecp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 189,
+        "lpSymbol": "EDOGE-USDT LP",
+        "lpAddresses": {
+            "56": "0xf15834372804182661A54539BE602AC9a831d702",
+            "97": "0x1902A2A357EfdE100f343a62c114c7327F4A83c3"
+        },
+        "token": "##tokens.edoge##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 190,
+        "lpSymbol": "EZ-USDT LP",
+        "lpAddresses": {
+            "56": "0x184B73DCa09Cd6d9BE8c1C86E5043AF43a9050f4",
+            "97": "0x86c68976eD35380cB0BB20fBff513EA65D8aCC9b"
+        },
+        "token": "##tokens.ez##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 191,
+        "lpSymbol": "FRONT-USDT LP",
+        "lpAddresses": {
+            "56": "0xC4554C719dA9909C0306FF1264F13a7214431fe1",
+            "97": "0xCcb9646D20B6A7dc7A108fE6dd396A84896eAcfb"
+        },
+        "token": "##tokens.front##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 192,
+        "lpSymbol": "GUH-USDT LP",
+        "lpAddresses": {
+            "56": "0x3Cae28A9443445791E32c5E8C78C99f8C52b004D",
+            "97": "0xd3A2C1aE05F44374d2637f8d9D9aD045cc11fA1A"
+        },
+        "token": "##tokens.guh##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 193,
+        "lpSymbol": "HAKKA-USDT LP",
+        "lpAddresses": {
+            "56": "0x1204394Dc58CF82D32532514c3bD9Dc56887cf7c",
+            "97": "0x2eAe0F05333836aa3EEeF23aEd83C88BcA6DB6dd"
+        },
+        "token": "##tokens.hakka##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 194,
+        "lpSymbol": "HARD-USDT LP",
+        "lpAddresses": {
+            "56": "0x8907190c0DDee12c4635D509D66B93Fa57CeebA2",
+            "97": "0xe789C6D3A2d5C611899a59065540b5212Bf0211E"
+        },
+        "token": "##tokens.hard##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 195,
+        "lpSymbol": "HGET-USDT LP",
+        "lpAddresses": {
+            "56": "0xD76f2080C55d4D6FDc9Bc1EE4a24987716E39e85",
+            "97": "0xC15C429E6296023094027154BD9DC612366B2174"
+        },
+        "token": "##tokens.hget##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 196,
+        "lpSymbol": "HOO-USDT LP",
+        "lpAddresses": {
+            "56": "0x215Ad7f36984a05C88fADC5B3AdBc003FBe94734",
+            "97": "0x77dbD671524012f74f5F3c972EbAB27E2Ff5bd16"
+        },
+        "token": "##tokens.hoo##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 197,
+        "lpSymbol": "IOTX-USDT LP",
+        "lpAddresses": {
+            "56": "0xf6Ff77CBfe4CCFDcFe445C6862dFD91550d9dA57",
+            "97": "0xDFBd1Ba7CEAc413A1e1279F8Ff7c3f8A96a0a6db"
+        },
+        "token": "##tokens.iotx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 198,
+        "lpSymbol": "JUV-USDT LP",
+        "lpAddresses": {
+            "56": "0xe970Cd31B561fC96f2183e51Ef2e45AF08714b13",
+            "97": "0x244594be3D46E9C91B59B314168145402Bb2876c"
+        },
+        "token": "##tokens.juv##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 199,
+        "lpSymbol": "KEY-USDT LP",
+        "lpAddresses": {
+            "56": "0xd895E0225775917b63c988436f74B038A933F3F8",
+            "97": "0xBCEc5F0985972d0e0060C943E56895eB80aA1dbE"
+        },
+        "token": "##tokens.key##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 200,
+        "lpSymbol": "LAS-USDT LP",
+        "lpAddresses": {
+            "56": "0x85f50cDe2a80138ec538C980366c6798724aA45B",
+            "97": "0x57C072F27346339d0633084A594FF1e659dE9BaB"
+        },
+        "token": "##tokens.las##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 201,
+        "lpSymbol": "LIEN-USDT LP",
+        "lpAddresses": {
+            "56": "0xCaB00f66C0596da9e641e2d981a46B15Ffd30Ae5",
+            "97": "0x0f154405a45Af696052E755Cf58a5bA2a18D4D31"
+        },
+        "token": "##tokens.lien##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 202,
+        "lpSymbol": "LMT-USDT LP",
+        "lpAddresses": {
+            "56": "0x1e164a4A1fB02Ffb8666e6260557A74FF2D5Fa4D",
+            "97": "0x16D8b125EA7cEC0927B264306291513c04E0193e"
+        },
+        "token": "##tokens.lmt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 203,
+        "lpSymbol": "LTO-USDT LP",
+        "lpAddresses": {
+            "56": "0x695f28343FC572696bc88634F11dCBdfD7b1F0E9",
+            "97": "0xcA1A4a847a3cFBA4973e7bdDa39f54BAEB13390D"
+        },
+        "token": "##tokens.lto##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 204,
+        "lpSymbol": "MDT-USDT LP",
+        "lpAddresses": {
+            "56": "0x3560A9716F28Bc1a53805B83237bEDE7C879e0B9",
+            "97": "0xCDB1fa13350FaF807Da86B1d05cac586B61b5b65"
+        },
+        "token": "##tokens.mdt##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 205,
+        "lpSymbol": "MIR-USDT LP",
+        "lpAddresses": {
+            "56": "0xf448252616894123F54D4311be91e3058b7548D0",
+            "97": "0x4CEc5269fC5115Dbe2CF165c479d227AfCfC78c5"
+        },
+        "token": "##tokens.mir##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 206,
+        "lpSymbol": "MKR-USDT LP",
+        "lpAddresses": {
+            "56": "0x54F7D79ed2A6A18Dec612b3b91A12f583197bE5c",
+            "97": "0x1E90823971294b7C95598FB9683a7dCAA1b5EAf3"
+        },
+        "token": "##tokens.mkr##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 207,
+        "lpSymbol": "MNDAO-USDT LP",
+        "lpAddresses": {
+            "56": "0xD287671ED987BD881213411d6D06ff766225a821",
+            "97": "0x8c5b0fd01624AD1500Ec637aDB025f40eB25b9c8"
+        },
+        "token": "##tokens.mndao##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 208,
+        "lpSymbol": "MOONSTAR-USDT LP",
+        "lpAddresses": {
+            "56": "0x83f70E086eE7B6f145873e49ADa83BFE3731D36c",
+            "97": "0x26e612A65Be384970F7e8D2F316C7f83fd9ac55F"
+        },
+        "token": "##tokens.moonstar##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 209,
+        "lpSymbol": "NCAT-USDT LP",
+        "lpAddresses": {
+            "56": "0xa69A670eba0385aaB09B623DA990446Fac77bBe4",
+            "97": "0x91ea7c449c8224Ff59448C390CfA2526739feACc"
+        },
+        "token": "##tokens.ncat##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 210,
+        "lpSymbol": "NCC -USDT LP",
+        "lpAddresses": {
+            "56": "0xE3bbd962EA7334eBF3579872137a2c6337151aF8",
+            "97": "0x19D9F7052a25bDbD24B4355e751634B00a8E5D30"
+        },
+        "token": "##tokens.ncc ##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 211,
+        "lpSymbol": "NEAR-USDT LP",
+        "lpAddresses": {
+            "56": "0x1E0F11671362E4163eb5530ffFA2f01d4028cdf9",
+            "97": "0x6e318927aCAeaCCB9f457Ec6f21b20890f09e1Da"
+        },
+        "token": "##tokens.near##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 212,
+        "lpSymbol": "NULS-USDT LP",
+        "lpAddresses": {
+            "56": "0x33381C18AE3d3dc9990E771Bb4f4C01209127Cca",
+            "97": "0x10574bBC56C01E90556e3ace19034b0bf1FFCd16"
+        },
+        "token": "##tokens.nuls##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 213,
+        "lpSymbol": "OCTA-USDT LP",
+        "lpAddresses": {
+            "56": "0x2986B7942eF7Fa8f8ACF17A1ff582B0512C46902",
+            "97": "0xd5EF664DC3b00e646b78bc17E37c17c1Be389Cee"
+        },
+        "token": "##tokens.octa##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 214,
+        "lpSymbol": "ODDZ-USDT LP",
+        "lpAddresses": {
+            "56": "0x4CE1A596b1050f2ba4202fc72a031b5acd1e2F0f",
+            "97": "0xd69112727d40cFAB5A407A18a021B862f24eB4De"
+        },
+        "token": "##tokens.oddz##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 215,
+        "lpSymbol": "OM-USDT LP",
+        "lpAddresses": {
+            "56": "0xCc0cF4AB6e5f8D4B71Be53751e62e7Da1aED1882",
+            "97": "0x7dD3b89EAe5a2261DD4B2b77A9FF0851Ce0EB4c8"
+        },
+        "token": "##tokens.om##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 216,
+        "lpSymbol": "ONT-USDT LP",
+        "lpAddresses": {
+            "56": "0x87ef69A111eE9B4EAab2A2fe5B318fC964d45580",
+            "97": "0xC70bBb3471BE7a5d1F56E6669a8C3A319cc4a4e6"
+        },
+        "token": "##tokens.ont##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 217,
+        "lpSymbol": "ORANGE-USDT LP",
+        "lpAddresses": {
+            "56": "0x449Eda3250c6197d5146b66ccd85f31e39cC9861",
+            "97": "0x9e6F4e021886e451852B505788cfDE5249Ed6229"
+        },
+        "token": "##tokens.orange##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 218,
+        "lpSymbol": "ORN-USDT LP",
+        "lpAddresses": {
+            "56": "0x588aD15210D8572C6FfBEb757976a8A4687C9fFb",
+            "97": "0x216f6FA3568539c7f3fEcc133cAf3cD8f2C46C72"
+        },
+        "token": "##tokens.orn##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 219,
+        "lpSymbol": "PAX-USDT LP",
+        "lpAddresses": {
+            "56": "0xb1e3A3902Cd68D5af3EcD79827c040f3B209846F",
+            "97": "0xF85B532c62824E8a9DDfEfFFF8eDC19445eb956E"
+        },
+        "token": "##tokens.pax##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 220,
+        "lpSymbol": "PERL-USDT LP",
+        "lpAddresses": {
+            "56": "0x5fD22a372C69DB2A4A730e33FEa1eC05f369D450",
+            "97": "0x4A3a8935ad4C776761e18c534E534f431dd1bc02"
+        },
+        "token": "##tokens.perl##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 221,
+        "lpSymbol": "PERP-USDT LP",
+        "lpAddresses": {
+            "56": "0xA7B3890cd72D71438814f79E12f5bcCD1c9C2062",
+            "97": "0x96e760dC165B2803730B29eAAe361E72D7B58893"
+        },
+        "token": "##tokens.perp##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 222,
+        "lpSymbol": "PHA-USDT LP",
+        "lpAddresses": {
+            "56": "0x7Ebf34b2Db641CBb74Bc4828e1a1DD200Fa17C40",
+            "97": "0x747Ac66A760f2272b02d0A0c08E7e45F85973650"
+        },
+        "token": "##tokens.pha##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 223,
+        "lpSymbol": "POLS-USDT LP",
+        "lpAddresses": {
+            "56": "0x95E444474d79178bC5f3dF411918465d855f0e64",
+            "97": "0x701C0a82Ae98DE3e0e70ea5641967cC72EaCddfF"
+        },
+        "token": "##tokens.pols##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 224,
+        "lpSymbol": "PROM-USDT LP",
+        "lpAddresses": {
+            "56": "0xC614d56fFd234fB4d4C4Fe9f78A2590042683736",
+            "97": "0x4a2B66Ab96C24f8Cc088318f7638B0c9639574ae"
+        },
+        "token": "##tokens.prom##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 225,
+        "lpSymbol": "PROS-USDT LP",
+        "lpAddresses": {
+            "56": "0xdA79f553e4E051F14a601AE17f36C7F11E69cc0E",
+            "97": "0xdC216382670932093A6A7326A20ef82257D7E6C5"
+        },
+        "token": "##tokens.pros##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 226,
+        "lpSymbol": "RACA-USDT LP",
+        "lpAddresses": {
+            "56": "0x22B958a2263Df74cd96eA61FB7DF0ed0766506d9",
+            "97": "0xBC95D4C023d906bC0854498082CEa00364e9cE24"
+        },
+        "token": "##tokens.raca##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 227,
+        "lpSymbol": "RENBTC-USDT LP",
+        "lpAddresses": {
+            "56": "0x71cA08BDa2D0e2881F7Ef3FEC597beA727b0d6E0",
+            "97": "0x39B0400bB63D34D06442375D121DFB85e8390aDa"
+        },
+        "token": "##tokens.renbtc##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 228,
+        "lpSymbol": "REVO-USDT LP",
+        "lpAddresses": {
+            "56": "0x2bFFEBaF1234a0d09713A23FEbb19DdDc8D89FA6",
+            "97": "0x353409F1413AFD3074325A6B95C561af4e753B8d"
+        },
+        "token": "##tokens.revo##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 229,
+        "lpSymbol": "RFOX-USDT LP",
+        "lpAddresses": {
+            "56": "0x9041bB1dF163614FC7982543a9742ba5645E1893",
+            "97": "0x5548e72D5B250e42e75Dc2f50990C6bcd3d54985"
+        },
+        "token": "##tokens.rfox##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 230,
+        "lpSymbol": "RMOON-USDT LP",
+        "lpAddresses": {
+            "56": "0xa0d96B776d0c6691A7A959517270223D8D441C50",
+            "97": "0x0BEBbCC9303E6Dbe39cCA2C6cAF6D69Da07F6361"
+        },
+        "token": "##tokens.rmoon##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 231,
+        "lpSymbol": "SNM-USDT LP",
+        "lpAddresses": {
+            "56": "0xEc15EA17e58715841855349CF638d024B373A04C",
+            "97": "0x45439c004a94e88CbF0335647c8FD0904B74Bff4"
+        },
+        "token": "##tokens.snm##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 232,
+        "lpSymbol": "SNX-USDT LP",
+        "lpAddresses": {
+            "56": "0xAc624f37b72BD77c151cd5Dd72dA187B5EEb39A5",
+            "97": "0x09234F1Dfe51F5728Bb9963C959BB3a02F5779F2"
+        },
+        "token": "##tokens.snx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 233,
+        "lpSymbol": "SPE-USDT LP",
+        "lpAddresses": {
+            "56": "0x1cfE53A67727122E2A740Dee0c42D83F006A66D0",
+            "97": "0xC5922907C52fA47fc873E1B949cbfDFB0Fe94F5C"
+        },
+        "token": "##tokens.spe##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 234,
+        "lpSymbol": "SUTER-USDT LP",
+        "lpAddresses": {
+            "56": "0x8bEAF7642067A1510AC6345aa4856aF5d00d7e30",
+            "97": "0x8A7e9f381A6391DcDe170c5DE581e795EFbDB52e"
+        },
+        "token": "##tokens.suter##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 235,
+        "lpSymbol": "SWTH-USDT LP",
+        "lpAddresses": {
+            "56": "0x5d7856b08d880E0536b4c394E634c1704382396A",
+            "97": "0xFD9044952F9F8CA17Eaf45b6775338CbaE3e913d"
+        },
+        "token": "##tokens.swth##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 236,
+        "lpSymbol": "TRADE-USDT LP",
+        "lpAddresses": {
+            "56": "0xa54a967c17D3b68a367C4141E2E0931582252792",
+            "97": "0xFf4be2cF8f9C80BF4EDE796b8eDeF47e26CC9880"
+        },
+        "token": "##tokens.trade##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 237,
+        "lpSymbol": "TRU-USDT LP",
+        "lpAddresses": {
+            "56": "0x0E24373C2713A379f66D535C0Afd2Fb8C5D4Bcab",
+            "97": "0x5aB93f82d61A96Af4696de69326f38fc3415EbB0"
+        },
+        "token": "##tokens.tru##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 238,
+        "lpSymbol": "TUSD-USDT LP",
+        "lpAddresses": {
+            "56": "0x693FaF64AB78B3930D2A4717840E9B4CdE9A07ed",
+            "97": "0x2AdB3fd8873E51b33B2Eb938806982C7BEF0EAbD"
+        },
+        "token": "##tokens.tusd##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 239,
+        "lpSymbol": "UNCX-USDT LP",
+        "lpAddresses": {
+            "56": "0x96Cf944A255a0ebcAb77b9b91b0C1bC49eaf788e",
+            "97": "0x31130719133d01d5b4D1F71432FCf76a8a11f3bA"
+        },
+        "token": "##tokens.uncx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 240,
+        "lpSymbol": "WELL-USDT LP",
+        "lpAddresses": {
+            "56": "0x947eC04dB9df46eC96b08cc33C20edf84ED08825",
+            "97": "0xc67dd81eA160edf9Da2C3423dC48871C398C50b1"
+        },
+        "token": "##tokens.well##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 241,
+        "lpSymbol": "WRX-USDT LP",
+        "lpAddresses": {
+            "56": "0x942dDe47ad765a3e8eC40045066351C31A1Ea0BB",
+            "97": "0x25F8dF5D23D3Fae17113934DE6f5692622B739c4"
+        },
+        "token": "##tokens.wrx##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 242,
+        "lpSymbol": "XBLZD-USDT LP",
+        "lpAddresses": {
+            "56": "0xbc9C2aD4320504f36a5e8cE8bF7A1dcA77dFb1b4",
+            "97": "0x5c6D3B77bE024bbA096050209f014cB241AA30Ba"
+        },
+        "token": "##tokens.xblzd##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 243,
+        "lpSymbol": "XDOGE-USDT LP",
+        "lpAddresses": {
+            "56": "0xB0Ce24749ba8ca853E82162D9342FE5946369D60",
+            "97": "0x4BFEc1E0e1f885C0e94301ba380A30563E25547b"
+        },
+        "token": "##tokens.xdoge##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 244,
+        "lpSymbol": "XED-USDT LP",
+        "lpAddresses": {
+            "56": "0x8873862A87a6de5eDF1f91E15CE46D77F171ECd2",
+            "97": "0xC3cf1BA38eEc7cc13C7589e3dACf9b642496F1B5"
+        },
+        "token": "##tokens.xed##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 245,
+        "lpSymbol": "XEND-USDT LP",
+        "lpAddresses": {
+            "56": "0x7eCB1fA43732BFFFfbD75f2Cd7Ccb22d194e5c36",
+            "97": "0xC88a1C501735ADA9f2ec3b49089215909DD7780f"
+        },
+        "token": "##tokens.xend##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 246,
+        "lpSymbol": "XMARK-USDT LP",
+        "lpAddresses": {
+            "56": "0x23F50B903d7596d77647CfE3114552294CcCAE10",
+            "97": "0x510E1f9947dfE7ff43be35A53Ec39b7D2a00Ad1E"
+        },
+        "token": "##tokens.xmark##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 247,
+        "lpSymbol": "XTZ-USDT LP",
+        "lpAddresses": {
+            "56": "0xB89E22F7666034dA7Cc5ae675AD387104cC46F06",
+            "97": "0xE628C4e5ca495DF820FaE7c1F61482FF65eD16fa"
+        },
+        "token": "##tokens.xtz##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 248,
+        "lpSymbol": "YFI-USDT LP",
+        "lpAddresses": {
+            "56": "0x8D98b9E1269010Ab2EC859e136a1CDbabfC123cA",
+            "97": "0x122aD5f45628aDb64b8aea1f44ACD28d817F9450"
+        },
+        "token": "##tokens.yfi##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 249,
+        "lpSymbol": "YFII-USDT LP",
+        "lpAddresses": {
+            "56": "0x5542e85f09F9554D4DBaB4a49e4ae53842A035A8",
+            "97": "0x42a6dFa4Fc6Ce0D95ef920F1C24aA6FD0ed26187"
+        },
+        "token": "##tokens.yfii##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 250,
+        "lpSymbol": "ZEC-USDT LP",
+        "lpAddresses": {
+            "56": "0xD1Dd7eD93A3D8100d7B7B53284dda13DAA25DbE7",
+            "97": "0x5bDae80bAE2e9f02DdC449feb35Ab69Cd9F64747"
+        },
+        "token": "##tokens.zec##",
+        "quoteToken": "##tokens.usdt##"
+    },
+    {
+        "pid": 251,
+        "lpSymbol": "ZEP-USDT LP",
+        "lpAddresses": {
+            "56": "0x34e21980BD5863C182C9E479C3E10197955C7142",
+            "97": "0x5BC9AC8C6ee08402ab6e17C27A917532C219DC22"
+        },
+        "token": "##tokens.zep##",
+        "quoteToken": "##tokens.usdt##"
+    }
+]
