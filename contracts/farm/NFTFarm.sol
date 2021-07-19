@@ -2,6 +2,7 @@
 
 pragma solidity >=0.7.4;
 
+import '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 import '@openzeppelin/contracts/token/ERC20/SafeERC20.sol';
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/utils/EnumerableMap.sol';
@@ -11,7 +12,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import '../interfaces/IMasterChef.sol';
 import 'hardhat/console.sol';
 
-contract NFTFarm is Ownable {
+contract NFTFarm is Ownable, ReentrancyGuard {
     using SafeMath for uint256;
     using EnumerableSet for EnumerableSet.UintSet;
     using EnumerableMap for EnumerableMap.UintToAddressMap;
@@ -19,6 +20,8 @@ contract NFTFarm is Ownable {
     event Stake(address user, uint256 tokenId, uint256 amount);
     event Unstake(address user, uint256 tokenId, uint256 amount);
     event Claim(address user, uint256 amount);
+    event NewRangeInfo(uint index, uint startIndex, uint endIndex, uint babyValue, uint weight);
+    event DelRangeInfo(uint index);
 
     uint constant public WEIGHT_BASE = 1e2;
     uint256 constant public RATIO = 1e18;
@@ -54,6 +57,10 @@ contract NFTFarm is Ownable {
     address public vault;
 
     constructor(ERC20 _babyToken, ERC721 _nftToken, IMasterChef _masterChef, address _vault) {
+        require(address(_babyToken) != address(0), "_babyToken address cannot be 0");
+        require(address(_nftToken) != address(0), "_nftToken address cannot be 0");
+        require(address(_masterChef) != address(0), "_masterChef address cannot be 0");
+        require(_vault != address(0), "_vault address cannot be 0");
         babyToken = _babyToken;
         nftToken = _nftToken;
         masterChef = _masterChef;
@@ -61,33 +68,40 @@ contract NFTFarm is Ownable {
     }
 
     function addRangeInfo(uint _startIndex, uint _endIndex, uint _babyValue, uint _weight) external onlyOwner {
+        require(_startIndex <= _endIndex, "error index");
         rangeInfo.push(RangeInfo({
             startIndex: _startIndex,
             endIndex: _endIndex,
             babyValue: _babyValue,
             weight: _weight
         }));
+        emit NewRangeInfo(rangeInfo.length - 1, _startIndex, _endIndex, _babyValue, _weight);
     }
 
     function setRangeInfo(uint _index, uint _startIndex, uint _endIndex, uint _babyValue, uint _weight) external onlyOwner {
         require(_index < rangeInfo.length, "illegal index");
+        require(_startIndex <= _endIndex, "error index");
         rangeInfo[_index] = RangeInfo({
             startIndex: _startIndex,
             endIndex: _endIndex,
             babyValue: _babyValue,
             weight: _weight
         });
+        emit NewRangeInfo(_index, _startIndex, _endIndex, _babyValue, _weight);
     }
 
     function delRangeInfo(uint _index) external onlyOwner {
         require(_index < rangeInfo.length, "illegal index"); 
         if (_index < rangeInfo.length - 1) {
+            RangeInfo memory _lastRangeInfo = rangeInfo[rangeInfo.length - 1];
             rangeInfo[_index] = rangeInfo[rangeInfo.length - 1];
+            emit NewRangeInfo(_index, _lastRangeInfo.startIndex, _lastRangeInfo.endIndex, _lastRangeInfo.babyValue, _lastRangeInfo.weight);
         }
         rangeInfo.pop();
+        emit DelRangeInfo(rangeInfo.length);
     }
 
-    function stake(uint _tokenId, uint _idx) public {
+    function stake(uint _tokenId, uint _idx) public nonReentrant {
         require(_idx < rangeInfo.length, "illegal idx");
         RangeInfo memory _rangeInfo = rangeInfo[_idx];
         require(_tokenId >= _rangeInfo.startIndex && _tokenId <= _rangeInfo.endIndex, "illegal tokenId");
@@ -97,7 +111,11 @@ contract NFTFarm is Ownable {
 
         PoolInfo memory _poolInfo = poolInfo;
         UserInfo memory _userInfo = userInfo[msg.sender];
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.enterStaking(0);
+        uint balanceAfter = babyToken.balanceOf(address(this));
+        uint _pending = balanceAfter.sub(balanceBefore);
         if (_pending > 0 && _poolInfo.totalShares > 0) {
             poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
             _poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
@@ -123,13 +141,17 @@ contract NFTFarm is Ownable {
         }
     }
 
-    function unstake(uint _tokenId) public {
+    function unstake(uint _tokenId) public nonReentrant {
         require(tokenOwners.get(_tokenId) == msg.sender, "illegal tokenId");
 
         PoolInfo memory _poolInfo = poolInfo;
         UserInfo memory _userInfo = userInfo[msg.sender];
 
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.leaveStaking(0);
+        uint balanceAfter = babyToken.balanceOf(address(this));
+        uint _pending = balanceAfter.sub(balanceBefore);
         if (_pending > 0 && _poolInfo.totalShares > 0) {
             poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
             _poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
@@ -142,11 +164,9 @@ contract NFTFarm is Ownable {
         if (_totalPending >= _pending) {
             masterChef.leaveStaking(_totalPending.sub(_pending));
         } else {
-            masterChef.leaveStaking(0);
-            if (_pending > _totalPending) {
-                babyToken.approve(address(masterChef), _pending.sub(_totalPending));
-                masterChef.enterStaking(_pending.sub(_totalPending));
-            }
+            //masterChef.leaveStaking(0);
+            babyToken.approve(address(masterChef), _pending.sub(_totalPending));
+            masterChef.enterStaking(_pending.sub(_totalPending));
         }
 
         if (_userPending > 0) {
@@ -174,11 +194,15 @@ contract NFTFarm is Ownable {
         }
     }
 
-    function claim(address _user) external {
+    function claim(address _user) external nonReentrant {
         PoolInfo memory _poolInfo = poolInfo;
         UserInfo memory _userInfo = userInfo[_user];
 
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.leaveStaking(0);
+        uint balanceAfter = babyToken.balanceOf(address(this));
+        uint _pending = balanceAfter.sub(balanceBefore);
         if (_pending > 0 && _poolInfo.totalShares > 0) {
             poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
             _poolInfo.accBabyPerShare = _poolInfo.accBabyPerShare.add(_pending.mul(RATIO).div(_poolInfo.totalShares));
@@ -190,11 +214,9 @@ contract NFTFarm is Ownable {
         if (_userPending >= _pending) {
             masterChef.leaveStaking(_userPending.sub(_pending));
         } else {
-            masterChef.leaveStaking(0);
-            if (_pending > _userPending) {
-                babyToken.approve(address(masterChef), _pending.sub(_userPending));
-                masterChef.enterStaking(_pending.sub(_userPending));
-            }
+            //masterChef.leaveStaking(0);
+            babyToken.approve(address(masterChef), _pending.sub(_userPending));
+            masterChef.enterStaking(_pending.sub(_userPending));
         }
         SafeERC20.safeTransfer(babyToken, _user, _userPending);
         emit Claim(_user, _userPending);
@@ -212,12 +234,12 @@ contract NFTFarm is Ownable {
         return userPending;
     }
 
-    function balanceOf(address owner) public view returns (uint256) {
+    function balanceOf(address owner) external view returns (uint256) {
         require(owner != address(0), "ERC721: balance query for the zero address");
         return holderTokens[owner].length();
     }
 
-    function tokenOfOwnerByIndex(address owner, uint256 index) public returns (uint256) {
+    function tokenOfOwnerByIndex(address owner, uint256 index) external view returns (uint256) {
         return holderTokens[owner].at(index);
     }
 }
