@@ -7,9 +7,10 @@ import '../interfaces/IBEP20.sol';
 import '../token/SafeBEP20.sol';
 import './MasterChef.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 import 'hardhat/console.sol';
 
-contract Bottle is Ownable {
+contract Bottle is Ownable, ReentrancyGuard {
     using SafeMath for uint256;
     using SafeBEP20 for IBEP20;
 
@@ -37,7 +38,7 @@ contract Bottle is Ownable {
         uint finishAt;
         uint256 totalAmount;
     }
-
+    /*
     function debugChangeStartAt(uint timestamp) external {
         poolInfo[currentVoteId].startAt = timestamp; 
     }
@@ -63,7 +64,7 @@ contract Bottle is Ownable {
             babyToken.transfer(owner(), amount);
         }
     }
-
+    */
     mapping(uint256 => PoolInfo) public poolInfo;
     uint public currentVoteId;
     
@@ -94,6 +95,8 @@ contract Bottle is Ownable {
         BabyToken _babyToken,
         uint256 _beginAt
     ) {
+        require(address(_masterChef) != address(0), "_masterChef address cannot be 0");
+        require(address(_babyToken) != address(0), "_babyToken address cannot be 0");
         masterChef = _masterChef;
         babyToken = _babyToken;
         beginAt = _beginAt;
@@ -118,14 +121,19 @@ contract Bottle is Ownable {
     //mapping (uint256 => mapping (address => mapping(address => uint256))) public userVoted;
     mapping (uint256 => mapping (address => uint256)) public getVotes;
 
-    function deposit(uint256 _voteId, address _for, uint256 amount) public {
+    function deposit(uint256 _voteId, address _for, uint256 amount) external nonReentrant {
+        require(address(_for) != address(0), "_for address cannot be 0");
         createPool();
         PoolInfo memory _pool = poolInfo[_voteId];
         require(_pool.avaliable, "illegal voteId");
         require(block.timestamp >= _pool.voteAt && block.timestamp <= _pool.unlockAt, "not the right time");
         SafeBEP20.safeTransferFrom(babyToken, msg.sender, address(this), amount);
 
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint256 balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.leaveStaking(0);
+        uint256 balanceAfter = babyToken.balanceOf(address(this));
+        uint256 _pending = balanceAfter.sub(balanceBefore);
         babyToken.approve(address(masterChef), amount.add(_pending));
         masterChef.enterStaking(amount.add(_pending));
         uint _totalShares = totalShares;
@@ -145,7 +153,7 @@ contract Bottle is Ownable {
         emit Deposit(_voteId, msg.sender, _for, amount);
     }
 
-    function withdraw(uint256 _voteId, address _for) public {
+    function withdraw(uint256 _voteId, address _for) external nonReentrant {
         createPool();
         require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
         PoolInfo memory _pool = poolInfo[_voteId];
@@ -154,7 +162,11 @@ contract Bottle is Ownable {
         UserInfo memory _userInfo = userInfo[_voteId][msg.sender][_for];
         require (_userInfo.amount > 0, "illegal amount");
 
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint256 balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.leaveStaking(0);
+        uint256 balanceAfter = babyToken.balanceOf(address(this));
+        uint256 _pending = balanceAfter.sub(balanceBefore);
         uint _totalShares = totalShares;
         if (_pending > 0 && _totalShares > 0) {
             accBabyPerShare = accBabyPerShare.add(_pending.mul(RATIO).div(_totalShares));
@@ -167,18 +179,16 @@ contract Bottle is Ownable {
             masterChef.leaveStaking(_totalPending.sub(_pending));
         } else {
             masterChef.leaveStaking(0);
-            if (_pending > _totalPending) {
-                babyToken.approve(address(masterChef), _pending.sub(_totalPending));
-                masterChef.enterStaking(_pending.sub(_totalPending));
-            }
+            babyToken.approve(address(masterChef), _pending.sub(_totalPending));
+            masterChef.enterStaking(_pending.sub(_totalPending));
+        }
+
+        if (_totalPending > 0) {
+            SafeBEP20.safeTransfer(babyToken, msg.sender, _totalPending);
         }
 
         if (_userPending > 0) {
-            SafeBEP20.safeTransfer(babyToken, msg.sender, _userPending);
             emit Claim(_voteId, msg.sender, _for, _userPending);
-        }
-        if (_totalPending > _userPending) {
-            SafeBEP20.safeTransfer(babyToken, msg.sender, _totalPending.sub(_userPending));
         }
 
         totalShares = _totalShares.sub(_userInfo.amount);
@@ -192,14 +202,18 @@ contract Bottle is Ownable {
         emit Withdraw(_voteId, msg.sender, _for, _userInfo.amount);
     }
 
-    function claim(uint256 _voteId, address _user, address _for) public {
+    function claim(uint256 _voteId, address _user, address _for) public nonReentrant {
         createPool();
         require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
         PoolInfo memory _pool = poolInfo[_voteId];
         require(_pool.avaliable, "illeagl voteId");
         UserInfo memory _userInfo = userInfo[_voteId][_user][_for];
 
-        uint _pending = masterChef.pendingCake(0, address(this));
+        //uint _pending = masterChef.pendingCake(0, address(this));
+        uint256 balanceBefore = babyToken.balanceOf(address(this));
+        masterChef.leaveStaking(0);
+        uint256 balanceAfter = babyToken.balanceOf(address(this));
+        uint256 _pending = balanceAfter.sub(balanceBefore);
         uint _totalShares = totalShares;
         if (_pending > 0 && _totalShares > 0) {
             accBabyPerShare = accBabyPerShare.add(_pending.mul(RATIO).div(_totalShares));
@@ -212,10 +226,8 @@ contract Bottle is Ownable {
             masterChef.leaveStaking(_userPending.sub(_pending));
         } else {
             masterChef.leaveStaking(0);
-            if (_pending > _userPending) {
-                babyToken.approve(address(masterChef), _pending.sub(_userPending));
-                masterChef.enterStaking(_pending.sub(_userPending));
-            }
+            babyToken.approve(address(masterChef), _pending.sub(_userPending));
+            masterChef.enterStaking(_pending.sub(_userPending));
         }
         SafeBEP20.safeTransfer(babyToken, _user, _userPending);
         emit Claim(_voteId, _user, _for, _userPending);
