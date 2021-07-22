@@ -178,14 +178,14 @@ contract Bottle is Ownable, ReentrancyGuard {
         if (_totalPending >= _pending) {
             masterChef.leaveStaking(_totalPending.sub(_pending));
         } else {
-            masterChef.leaveStaking(0);
+            //masterChef.leaveStaking(0);
             babyToken.approve(address(masterChef), _pending.sub(_totalPending));
             masterChef.enterStaking(_pending.sub(_totalPending));
         }
 
-        if (_totalPending > 0) {
+        //if (_totalPending > 0) {
             SafeBEP20.safeTransfer(babyToken, msg.sender, _totalPending);
-        }
+        //}
 
         if (_userPending > 0) {
             emit Claim(_voteId, msg.sender, _for, _userPending);
@@ -204,7 +204,7 @@ contract Bottle is Ownable, ReentrancyGuard {
 
     function claim(uint256 _voteId, address _user, address _for) public nonReentrant {
         createPool();
-        require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
+        //require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
         PoolInfo memory _pool = poolInfo[_voteId];
         require(_pool.avaliable, "illeagl voteId");
         UserInfo memory _userInfo = userInfo[_voteId][_user][_for];
@@ -225,7 +225,7 @@ contract Bottle is Ownable, ReentrancyGuard {
         if (_userPending >= _pending) {
             masterChef.leaveStaking(_userPending.sub(_pending));
         } else {
-            masterChef.leaveStaking(0);
+            //masterChef.leaveStaking(0);
             babyToken.approve(address(masterChef), _pending.sub(_userPending));
             masterChef.enterStaking(_pending.sub(_userPending));
         }
@@ -242,9 +242,11 @@ contract Bottle is Ownable, ReentrancyGuard {
     }
 
     function pending(uint256 _voteId, address _for, address _user) external view returns (uint256) {
+        /*
         if (currentVoteId > 4 && _voteId < currentVoteId - 4) {
             return 0;
         }
+        */
         uint _pending = masterChef.pendingCake(0, address(this));
         if (totalShares == 0) {
             return 0;
