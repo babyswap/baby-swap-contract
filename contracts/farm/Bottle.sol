@@ -155,7 +155,7 @@ contract Bottle is Ownable, ReentrancyGuard {
 
     function withdraw(uint256 _voteId, address _for) external nonReentrant {
         createPool();
-        require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
+        //require(currentVoteId <= 4 || _voteId >= currentVoteId - 4, "illegal voteId");
         PoolInfo memory _pool = poolInfo[_voteId];
         require(_pool.avaliable, "illegal voteId");
         require(block.timestamp > _pool.unlockAt, "not the right time");
