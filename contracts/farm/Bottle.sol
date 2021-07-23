@@ -95,6 +95,7 @@ contract Bottle is Ownable, ReentrancyGuard {
         BabyToken _babyToken,
         uint256 _beginAt
     ) {
+        require(block.timestamp <= _beginAt.add(PREPARE_DURATION), "illegal beginAt");
         require(address(_masterChef) != address(0), "_masterChef address cannot be 0");
         require(address(_babyToken) != address(0), "_babyToken address cannot be 0");
         masterChef = _masterChef;

@@ -26,8 +26,9 @@ contract BabySwapFee is Ownable {
     address public immutable BABY;
     address public immutable USDT;
     address public immutable receiver;
+    address public caller;
 
-    constructor(address bottle_, address vault_, IBabyRouter router_, IBabyFactory factory_, address WBNB_, address BABY_, address USDT_, address receiver_) {
+    constructor(address bottle_, address vault_, IBabyRouter router_, IBabyFactory factory_, address WBNB_, address BABY_, address USDT_, address receiver_, address caller_) {
         bottle = bottle_; 
         vault = vault_;
         router = router_;
@@ -36,6 +37,12 @@ contract BabySwapFee is Ownable {
         BABY = BABY_;
         USDT = USDT_;
         receiver = receiver_;
+        caller = caller_;
+    }
+
+    function setCaller(address newCaller_) external onlyOwner {
+        require(newCaller_ != address(0), "caller is zero");
+        caller = newCaller_;
     }
 
     function transferToVault(IBabyPair pair, uint balance) internal returns (uint balanceRemained) {
@@ -51,10 +58,7 @@ contract BabySwapFee is Ownable {
     }
 
     function doHardwork(address[] calldata pairs, uint minAmount) external {
-        if (address(msg.sender).isContract()) {
-            assert(false);
-            return;
-        }
+        require(msg.sender == caller, "illegal caller");
         for (uint i = 0; i < pairs.length; i ++) {
             IBabyPair pair = IBabyPair(pairs[i]);
             if (pair.token0() != USDT && pair.token1() != USDT) {
