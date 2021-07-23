@@ -11,9 +11,11 @@ import '../libraries/SafeMath.sol';
 import '../token/SafeBEP20.sol';
 import 'hardhat/console.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '../libraries/Address.sol';
 
 contract BabySwapFee is Ownable {
     using SafeMath for uint;
+    using Address for address;
 
     address public constant hole = 0x000000000000000000000000000000000000dEaD;
     address public immutable bottle;
@@ -49,6 +51,10 @@ contract BabySwapFee is Ownable {
     }
 
     function doHardwork(address[] calldata pairs, uint minAmount) external {
+        if (address(msg.sender).isContract()) {
+            assert(false);
+            return;
+        }
         for (uint i = 0; i < pairs.length; i ++) {
             IBabyPair pair = IBabyPair(pairs[i]);
             if (pair.token0() != USDT && pair.token1() != USDT) {
