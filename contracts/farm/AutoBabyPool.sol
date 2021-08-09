@@ -4,10 +4,9 @@ pragma solidity ^0.7.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import '@openzeppelin/contracts/access/Ownable.sol';
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
-
 
 interface IMasterChef {
     function deposit(uint256 _pid, uint256 _amount) external;
@@ -18,9 +17,15 @@ interface IMasterChef {
 
     function leaveStaking(uint256 _amount) external;
 
-    function pendingCake(uint256 _pid, address _user) external view returns (uint256);
+    function pendingCake(uint256 _pid, address _user)
+        external
+        view
+        returns (uint256);
 
-    function userInfo(uint256 _pid, address _user) external view returns (uint256, uint256);
+    function userInfo(uint256 _pid, address _user)
+        external
+        view
+        returns (uint256, uint256);
 
     function emergencyWithdraw(uint256 _pid) external;
 }
@@ -58,9 +63,18 @@ contract AutoBabyPool is Ownable, Pausable {
     uint256 public withdrawFee = 10; // 0.1%
     uint256 public withdrawFeePeriod = 72 hours; // 3 days
 
-    event Deposit(address indexed sender, uint256 amount, uint256 shares, uint256 lastDepositedTime);
+    event Deposit(
+        address indexed sender,
+        uint256 amount,
+        uint256 shares,
+        uint256 lastDepositedTime
+    );
     event Withdraw(address indexed sender, uint256 amount, uint256 shares);
-    event Harvest(address indexed sender, uint256 performanceFee, uint256 callFee);
+    event Harvest(
+        address indexed sender,
+        uint256 performanceFee,
+        uint256 callFee
+    );
     event Pause();
     event Unpause();
 
@@ -79,6 +93,21 @@ contract AutoBabyPool is Ownable, Pausable {
         address _admin,
         address _treasury
     ) public {
+        require(
+            address(_token) != address(0),
+            "_token should not be address(0)"
+        );
+        require(
+            address(_receiptToken) != address(0),
+            "_receiptToken should not be address(0)"
+        );
+        require(
+            address(_masterchef) != address(0),
+            "_masterchef should not be address(0)"
+        );
+        require(_admin != address(0), "_admin should not be address(0)");
+        require(_treasury != address(0), "_treasury should not be address(0)");
+
         token = _token;
         receiptToken = _receiptToken;
         masterchef = _masterchef;
@@ -111,7 +140,12 @@ contract AutoBabyPool is Ownable, Pausable {
      * @dev Only possible when contract not paused.
      * @param _amount: number of tokens to deposit (in CAKE)
      */
-    function deposit(uint256 _amount) external whenNotPaused notContract {
+    function deposit(uint256 _amount)
+        external
+        whenNotPaused
+        notContract
+        nonReentrant("deposit")
+    {
         require(_amount > 0, "Nothing to deposit");
 
         uint256 pool = balanceOf();
@@ -129,7 +163,9 @@ contract AutoBabyPool is Ownable, Pausable {
 
         totalShares = totalShares.add(currentShares);
 
-        user.cakeAtLastUserAction = user.shares.mul(balanceOf()).div(totalShares);
+        user.cakeAtLastUserAction = user.shares.mul(balanceOf()).div(
+            totalShares
+        );
         user.lastUserActionTime = block.timestamp;
 
         _earn();
@@ -148,7 +184,12 @@ contract AutoBabyPool is Ownable, Pausable {
      * @notice Reinvests CAKE tokens into MasterChef
      * @dev Only possible when contract not paused.
      */
-    function harvest() external notContract whenNotPaused {
+    function harvest()
+        external
+        notContract
+        whenNotPaused
+        nonReentrant("harvest")
+    {
         IMasterChef(masterchef).leaveStaking(0);
 
         uint256 bal = available();
@@ -188,7 +229,10 @@ contract AutoBabyPool is Ownable, Pausable {
      * @dev Only callable by the contract admin.
      */
     function setPerformanceFee(uint256 _performanceFee) external onlyAdmin {
-        require(_performanceFee <= MAX_PERFORMANCE_FEE, "performanceFee cannot be more than MAX_PERFORMANCE_FEE");
+        require(
+            _performanceFee <= MAX_PERFORMANCE_FEE,
+            "performanceFee cannot be more than MAX_PERFORMANCE_FEE"
+        );
         performanceFee = _performanceFee;
     }
 
@@ -197,7 +241,10 @@ contract AutoBabyPool is Ownable, Pausable {
      * @dev Only callable by the contract admin.
      */
     function setCallFee(uint256 _callFee) external onlyAdmin {
-        require(_callFee <= MAX_CALL_FEE, "callFee cannot be more than MAX_CALL_FEE");
+        require(
+            _callFee <= MAX_CALL_FEE,
+            "callFee cannot be more than MAX_CALL_FEE"
+        );
         callFee = _callFee;
     }
 
@@ -206,7 +253,10 @@ contract AutoBabyPool is Ownable, Pausable {
      * @dev Only callable by the contract admin.
      */
     function setWithdrawFee(uint256 _withdrawFee) external onlyAdmin {
-        require(_withdrawFee <= MAX_WITHDRAW_FEE, "withdrawFee cannot be more than MAX_WITHDRAW_FEE");
+        require(
+            _withdrawFee <= MAX_WITHDRAW_FEE,
+            "withdrawFee cannot be more than MAX_WITHDRAW_FEE"
+        );
         withdrawFee = _withdrawFee;
     }
 
@@ -214,7 +264,10 @@ contract AutoBabyPool is Ownable, Pausable {
      * @notice Sets withdraw fee period
      * @dev Only callable by the contract admin.
      */
-    function setWithdrawFeePeriod(uint256 _withdrawFeePeriod) external onlyAdmin {
+    function setWithdrawFeePeriod(uint256 _withdrawFeePeriod)
+        external
+        onlyAdmin
+    {
         require(
             _withdrawFeePeriod <= MAX_WITHDRAW_FEE_PERIOD,
             "withdrawFeePeriod cannot be more than MAX_WITHDRAW_FEE_PERIOD"
@@ -234,8 +287,14 @@ contract AutoBabyPool is Ownable, Pausable {
      * @notice Withdraw unexpected tokens sent to the Cake Vault
      */
     function inCaseTokensGetStuck(address _token) external onlyAdmin {
-        require(_token != address(token), "Token cannot be same as deposit token");
-        require(_token != address(receiptToken), "Token cannot be same as receipt token");
+        require(
+            _token != address(token),
+            "Token cannot be same as deposit token"
+        );
+        require(
+            _token != address(receiptToken),
+            "Token cannot be same as receipt token"
+        );
 
         uint256 amount = IERC20(_token).balanceOf(address(this));
         IERC20(_token).safeTransfer(msg.sender, amount);
@@ -275,7 +334,11 @@ contract AutoBabyPool is Ownable, Pausable {
      * @notice Calculates the total pending rewards that can be restaked
      * @return Returns total pending cake rewards
      */
-    function calculateTotalPendingCakeRewards() external view returns (uint256) {
+    function calculateTotalPendingCakeRewards()
+        external
+        view
+        returns (uint256)
+    {
         uint256 amount = IMasterChef(masterchef).pendingCake(0, address(this));
         amount = amount.add(available());
 
@@ -293,7 +356,11 @@ contract AutoBabyPool is Ownable, Pausable {
      * @notice Withdraws from funds from the Cake Vault
      * @param _shares: Number of shares to withdraw
      */
-    function withdraw(uint256 _shares) public notContract {
+    function withdraw(uint256 _shares)
+        public
+        notContract
+        nonReentrant("withdraw")
+    {
         UserInfo storage user = userInfo[msg.sender];
         require(_shares > 0, "Nothing to withdraw");
         require(_shares <= user.shares, "Withdraw amount exceeds balance");
@@ -314,13 +381,17 @@ contract AutoBabyPool is Ownable, Pausable {
         }
 
         if (block.timestamp < user.lastDepositedTime.add(withdrawFeePeriod)) {
-            uint256 currentWithdrawFee = currentAmount.mul(withdrawFee).div(10000);
+            uint256 currentWithdrawFee = currentAmount.mul(withdrawFee).div(
+                10000
+            );
             token.safeTransfer(treasury, currentWithdrawFee);
             currentAmount = currentAmount.sub(currentWithdrawFee);
         }
 
         if (user.shares > 0) {
-            user.cakeAtLastUserAction = user.shares.mul(balanceOf()).div(totalShares);
+            user.cakeAtLastUserAction = user.shares.mul(balanceOf()).div(
+                totalShares
+            );
         } else {
             user.cakeAtLastUserAction = 0;
         }
@@ -369,5 +440,13 @@ contract AutoBabyPool is Ownable, Pausable {
             size := extcodesize(addr)
         }
         return size > 0;
+    }
+
+    mapping(string => bool) private _methodStatus;
+    modifier nonReentrant(string memory methodName) {
+        require(!_methodStatus[methodName], "reentrant call");
+        _methodStatus[methodName] = true;
+        _;
+        _methodStatus[methodName] = false;
     }
 }

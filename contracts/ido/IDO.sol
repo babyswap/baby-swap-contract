@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity >=0.6.0;
-import '@openzeppelin/contracts/access/Ownable.sol';
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-import '../interfaces/IBEP20.sol';
-import '../libraries/SafeMath.sol';
-import '../libraries/Address.sol';
+import "../interfaces/IBEP20.sol";
+import "../libraries/SafeMath.sol";
+import "../libraries/Address.sol";
 
 /**
  * @title SafeBEP20
@@ -25,7 +25,10 @@ library SafeBEP20 {
         address to,
         uint256 value
     ) internal {
-        _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.transfer.selector, to, value)
+        );
     }
 
     function safeTransferFrom(
@@ -34,7 +37,10 @@ library SafeBEP20 {
         address to,
         uint256 value
     ) internal {
-        _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.transferFrom.selector, from, to, value)
+        );
     }
 
     /**
@@ -55,9 +61,12 @@ library SafeBEP20 {
         // solhint-disable-next-line max-line-length
         require(
             (value == 0) || (token.allowance(address(this), spender) == 0),
-            'SafeBEP20: approve from non-zero to non-zero allowance'
+            "SafeBEP20: approve from non-zero to non-zero allowance"
         );
-        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.approve.selector, spender, value)
+        );
     }
 
     function safeIncreaseAllowance(
@@ -65,8 +74,17 @@ library SafeBEP20 {
         address spender,
         uint256 value
     ) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).add(value);
-        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
+        uint256 newAllowance = token.allowance(address(this), spender).add(
+            value
+        );
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(
+                token.approve.selector,
+                spender,
+                newAllowance
+            )
+        );
     }
 
     function safeDecreaseAllowance(
@@ -76,9 +94,16 @@ library SafeBEP20 {
     ) internal {
         uint256 newAllowance = token.allowance(address(this), spender).sub(
             value,
-            'SafeBEP20: decreased allowance below zero'
+            "SafeBEP20: decreased allowance below zero"
         );
-        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(
+                token.approve.selector,
+                spender,
+                newAllowance
+            )
+        );
     }
 
     /**
@@ -92,11 +117,17 @@ library SafeBEP20 {
         // we're implementing it ourselves. We use {Address.functionCall} to perform this call, which verifies that
         // the target address contains contract code and also asserts for success in the low-level call.
 
-        bytes memory returndata = address(token).functionCall(data, 'SafeBEP20: low-level call failed');
+        bytes memory returndata = address(token).functionCall(
+            data,
+            "SafeBEP20: low-level call failed"
+        );
         if (returndata.length > 0) {
             // Return data is optional
             // solhint-disable-next-line max-line-length
-            require(abi.decode(returndata, (bool)), 'SafeBEP20: BEP20 operation did not succeed');
+            require(
+                abi.decode(returndata, (bool)),
+                "SafeBEP20: BEP20 operation did not succeed"
+            );
         }
     }
 }
@@ -145,6 +176,8 @@ contract IDO is Ownable {
     );
     event IDOCharge(uint256 issue, uint256 receiveValue, uint256 leftValue);
 
+    event IDORemove(uint256 issue);
+
     function createIDO(
         IBEP20 idoToken,
         IBEP20 receiveToken,
@@ -155,11 +188,18 @@ contract IDO is Ownable {
         uint256 duration
     ) external onlyOwner {
         require(
-            block.timestamp > IDODB[IDOIssue].startTime.add(IDODB[IDOIssue].duration),
+            block.timestamp >
+                IDODB[IDOIssue].startTime.add(IDODB[IDOIssue].duration),
             "ido is not over yet."
         );
-        require(address(idoToken) != address(0), "idoToken address cannot be 0");
-        require(address(receiveToken) != address(0), "receiveToken address cannot be 0");
+        require(
+            address(idoToken) != address(0),
+            "idoToken address cannot be 0"
+        );
+        require(
+            address(receiveToken) != address(0),
+            "receiveToken address cannot be 0"
+        );
 
         IDOIssue = IDOIssue.add(1);
         IDORecord storage ido = IDODB[IDOIssue];
@@ -185,6 +225,14 @@ contract IDO is Ownable {
         );
     }
 
+    function removeIDO() external onlyOwner {
+        require(IDODB[IDOIssue].startTime > block.timestamp, 'There is no ido that can be deleted.');
+        IDODB[IDOIssue].idoToken.safeTransfer(msg.sender, IDODB[IDOIssue].idoTotal);
+        delete IDODB[IDOIssue];
+        emit IDORemove(IDOIssue);
+        IDOIssue = IDOIssue.sub(1);
+    }
+
     function chargeIDO(uint256 issue) external onlyOwner {
         IDORecord storage record = IDODB[issue];
         require(issue <= IDOIssue && issue > 0, "IDO that does not exist.");
@@ -198,8 +246,10 @@ contract IDO is Ownable {
         uint256 backValue;
 
         isCharge[issue] = true;
-     
-        uint256 prop = record.receivedTotal.mul(1e36).div(record.idoTotal.mul(record.price));            
+
+        uint256 prop = record.receivedTotal.mul(1e36).div(
+            record.idoTotal.mul(record.price)
+        );
         if (prop >= 1e18) {
             receiveValue = record.idoTotal.mul(record.price).div(1e18);
             record.receiveToken.safeTransfer(msg.sender, receiveValue);
@@ -223,8 +273,11 @@ contract IDO is Ownable {
                 block.timestamp < record.startTime.add(record.duration),
             "IDO is not in progress."
         );
-        require(record.payAmount[msg.sender].add(value) > record.maxLimit);
-        
+        require(
+            record.payAmount[msg.sender].add(value) > record.maxLimit,
+            "Limit Exceeded"
+        );
+
         record.payAmount[msg.sender] = record.payAmount[msg.sender].add(value);
         record.receivedTotal = record.receivedTotal.add(value);
         record.receiveToken.safeTransferFrom(msg.sender, address(this), value);
@@ -244,7 +297,9 @@ contract IDO is Ownable {
         );
 
         if (prop > 1e18) {
-            _idoAmount = record.payAmount[account].mul(1e36).div(prop).div(record.price);
+            _idoAmount = record.payAmount[account].mul(1e36).div(prop).div(
+                record.price
+            );
 
             _sendBack = record.payAmount[account].sub(
                 _idoAmount.mul(record.price).div(1e18)
@@ -254,7 +309,11 @@ contract IDO is Ownable {
         }
     }
 
-    function userPayValue(uint256 issue, address account) public view returns(uint256){
+    function userPayValue(uint256 issue, address account)
+        public
+        view
+        returns (uint256)
+    {
         return IDODB[issue].payAmount[account];
     }
 
