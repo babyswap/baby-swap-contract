@@ -226,8 +226,14 @@ contract IDO is Ownable {
     }
 
     function removeIDO() external onlyOwner {
-        require(IDODB[IDOIssue].startTime > block.timestamp, 'There is no ido that can be deleted.');
-        IDODB[IDOIssue].idoToken.safeTransfer(msg.sender, IDODB[IDOIssue].idoTotal);
+        require(
+            IDODB[IDOIssue].startTime > block.timestamp,
+            "There is no ido that can be deleted."
+        );
+        IDODB[IDOIssue].idoToken.safeTransfer(
+            msg.sender,
+            IDODB[IDOIssue].idoTotal
+        );
         delete IDODB[IDOIssue];
         emit IDORemove(IDOIssue);
         IDOIssue = IDOIssue.sub(1);
@@ -274,7 +280,7 @@ contract IDO is Ownable {
             "IDO is not in progress."
         );
         require(
-            record.payAmount[msg.sender].add(value) > record.maxLimit,
+            record.payAmount[msg.sender].add(value) <= record.maxLimit,
             "Limit Exceeded"
         );
 
@@ -315,6 +321,14 @@ contract IDO is Ownable {
         returns (uint256)
     {
         return IDODB[issue].payAmount[account];
+    }
+
+    function isWithdraw(uint256 issue, address account)
+        public
+        view
+        returns (bool)
+    {
+        return IDODB[issue].isWithdraw[account];
     }
 
     function withdraw(uint256 issue) external {
