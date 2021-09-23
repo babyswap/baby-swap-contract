@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.6.12;
+pragma solidity 0.7.4;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -169,6 +169,7 @@ contract HoldStake is Ownable {
     }
 
     function harvest(uint256 _pid) external {
+        require(_pid > 0 && _pid <= pid, "Hold: Can't find this pool");
         DepositInfo storage depositInfo = depositInfos[msg.sender][_pid];
         require(
             block.timestamp > depositInfo.unlockTime,
@@ -183,6 +184,7 @@ contract HoldStake is Ownable {
     }
 
     function withdraw(uint256 _pid) external {
+        require(_pid > 0 && _pid <= pid, "Hold: Can't find this pool");
         DepositInfo storage depositInfo = depositInfos[msg.sender][_pid];
         require(
             block.timestamp > depositInfo.unlockTime,
@@ -208,11 +210,13 @@ contract HoldStake is Ownable {
             uint256 interestLeft = interestHardcap[_pid].sub(
                 holdPools[_pid].interest
             );
-            holdPools[_pid].token.safeTransfer(
-                interestProvider[_pid],
-                interestLeft
-            );
-            emit InterestRefund(_pid, interestProvider[_pid], interestLeft);
+            if (interestLeft > 0) {
+                holdPools[_pid].token.safeTransfer(
+                    interestProvider[_pid],
+                    interestLeft
+                );
+                emit InterestRefund(_pid, interestProvider[_pid], interestLeft);
+            }
         }
     }
 
