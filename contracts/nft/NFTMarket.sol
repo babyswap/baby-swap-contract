@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.7.4;
+pragma solidity =0.7.4;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -69,6 +69,7 @@ contract NFTMarket is Ownable, ReentrancyGuard {
         uint256 tokenId,
         uint256 price
     ) external {
+        require(tokenId != 0, "NFTMarket: tokenId can not be 0!");
         require(nftTokenSupported[nftToken], "NFTMarket: Unsupported NFT");
         require(erc20Supported[currency], "NFTMarket: Unsupported tokens");
         require(
@@ -94,7 +95,6 @@ contract NFTMarket is Ownable, ReentrancyGuard {
     function buy(address nftToken, uint256 tokenId) external nonReentrant {
         OrderInfo memory orderInfo = orderInfos[nftToken][tokenId];
         require(orderInfo.tokenId != 0, "NFTMarket: NFT does not exist");
-
         uint256 _taxFee = orderInfo.price.mul(taxFee).div(ROUND);
         uint256 _babyFee = orderInfo.price.mul(babyFee).div(ROUND);
         uint256 _authorFee = orderInfo.price.mul(authorFee).div(ROUND);
@@ -160,6 +160,7 @@ contract NFTMarket is Ownable, ReentrancyGuard {
         external
         onlyOwner
     {
+        require(author != address(0), "NFTMarket: author address cannot be 0");
         nftTokenSupported[nftToken] = true;
         nftTokenAuthors[nftToken] = author;
         emit AddNFTSuppout(nftToken, author);
@@ -177,7 +178,7 @@ contract NFTMarket is Ownable, ReentrancyGuard {
     }
 
     function removeERC20Support(address erc20) external onlyOwner {
-        erc20Supported[erc20] = true;
+        erc20Supported[erc20] = false;
         emit RemoveERC20Suppout(erc20);
     }
 
@@ -185,6 +186,10 @@ contract NFTMarket is Ownable, ReentrancyGuard {
         external
         onlyOwner
     {
+        require(
+            maxLimit >= nftPriceMinLimit[nftToken],
+            "NFTMarket: maxLimit can not be less than min limit!"
+        );
         nftPriceMaxLimit[nftToken] = maxLimit;
     }
 
@@ -192,6 +197,12 @@ contract NFTMarket is Ownable, ReentrancyGuard {
         external
         onlyOwner
     {
+        if (nftPriceMaxLimit[nftToken] != 0) {
+            require(
+                minLimit <= nftPriceMaxLimit[nftToken],
+                "NFTMarket: minLimit can not be larger than max limit!"
+            );
+        }
         nftPriceMinLimit[nftToken] = minLimit;
     }
 
