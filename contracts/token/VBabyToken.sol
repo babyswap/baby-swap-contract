@@ -63,13 +63,14 @@ contract vBABYToken is Ownable {
 
     // ============ Events ============
 
-    event MintVBABY(address user, address superior, uint256 mintBABY);
+    event MintVBABY(address user, address superior, uint256 mintBABY, uint256 totalStakingPower);
     event RedeemVBABY(
         address user,
         uint256 receiveBABY,
         uint256 burnBABY,
         uint256 feeBABY,
-        uint256 reserveBABY
+        uint256 reserveBABY,
+        uint256 totalStakingPower
     );
     event DonateBABY(address user, uint256 donateBABY);
     event SetCanTransfer(bool allowed);
@@ -100,6 +101,18 @@ contract vBABYToken is Ownable {
         _;
     }
 
+    event TokenInfo(uint256 babyTokenSupply, uint256 babyBalanceInVBaby);
+    event CurrentUserInfo(address user, uint128 stakingPower, uint128 superiorSP, address superior, uint256 credit, uint256 creditDebt);
+    
+    function logTokenInfo(IERC20 token) internal {
+        emit TokenInfo(token.totalSupply(), token.balanceOf(address(this)));
+    }
+
+    function logCurrentUserInfo(address user) internal {
+        UserInfo storage currentUser = userInfo[user]; 
+        emit CurrentUserInfo(user, currentUser.stakingPower, currentUser.superiorSP, currentUser.superior, currentUser.credit, currentUser.creditDebt);
+    }
+
     // ============ Constructor ============
 
     constructor(
@@ -125,6 +138,7 @@ contract vBABYToken is Ownable {
     function changePerReward(uint256 babyPerBlock) public onlyOwner {
         _updateAlpha();
         _babyPerBlock = babyPerBlock;
+        logTokenInfo(IERC20(_babyToken));
         emit ChangePerReward(babyPerBlock);
     }
 
@@ -200,7 +214,10 @@ contract vBABYToken is Ownable {
 
         _mint(user, newStakingPower);
 
-        emit MintVBABY(msg.sender, superiorAddress, babyAmount);
+        logTokenInfo(IERC20(_babyToken));
+        logCurrentUserInfo(msg.sender);
+        logCurrentUserInfo(user.superior);
+        emit MintVBABY(msg.sender, superiorAddress, babyAmount, _totalStakingPower);
     }
 
     function redeem(uint256 vBabyAmount, bool all)
@@ -249,12 +266,16 @@ contract vBABYToken is Ownable {
             );
         }
 
+        logTokenInfo(IERC20(_babyToken));
+        logCurrentUserInfo(msg.sender);
+        logCurrentUserInfo(user.superior);
         emit RedeemVBABY(
             msg.sender,
             babyReceive,
             burnBabyAmount,
             withdrawFeeAmount,
-            reserveAmount
+            reserveAmount,
+            _totalStakingPower
         );
     }
 
@@ -270,6 +291,7 @@ contract vBABYToken is Ownable {
                 DecimalMath.divFloor(babyAmount, _totalStakingPower)
             )
         );
+        logTokenInfo(IERC20(_babyToken));
         emit DonateBABY(msg.sender, babyAmount);
     }
 
@@ -481,6 +503,7 @@ contract vBABYToken is Ownable {
             );
 
             _totalBlockReward = _totalBlockReward.add(curDistribution);
+            logTokenInfo(IERC20(_babyToken));
             emit PreDeposit(curDistribution);
         }
     }
@@ -600,6 +623,11 @@ contract vBABYToken is Ownable {
         _redeem(fromUser, stakingPower);
         _mint(toUser, stakingPower);
 
+        logTokenInfo(IERC20(_babyToken));
+        logCurrentUserInfo(from);
+        logCurrentUserInfo(fromUser.superior);
+        logCurrentUserInfo(to);
+        logCurrentUserInfo(toUser.superior);
         emit Transfer(from, to, vBabyAmount);
     }
 
