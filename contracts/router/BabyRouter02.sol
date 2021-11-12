@@ -241,7 +241,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsOut(factories, fees, minAmounts, amountIn, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'BabyRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         TransferHelper.safeTransferFrom(
-            path[0], msg.sender, BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]
+            path[0], msg.sender, BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]
         );
         _swap(amounts, path, usedFactories, to);
     }
@@ -260,7 +260,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsIn(factories, fees, minAmounts, amountOut, path);
         require(amounts[0] <= amountInMax, 'BabyRouter: EXCESSIVE_INPUT_AMOUNT');
         TransferHelper.safeTransferFrom(
-            path[0], msg.sender, BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]
+            path[0], msg.sender, BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]
         );
         _swap(amounts, path, usedFactories, to);
     }
@@ -281,7 +281,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsOut(factories, fees, minAmounts, msg.value, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'BabyRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
-        assert(IWETH(WETH).transfer(BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]));
+        assert(IWETH(WETH).transfer(BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]));
         _swap(amounts, path, usedFactories, to);
     }
     function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
@@ -300,7 +300,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsIn(factories, fees, minAmounts, amountOut, path);
         require(amounts[0] <= amountInMax, 'BabyRouter: EXCESSIVE_INPUT_AMOUNT');
         TransferHelper.safeTransferFrom(
-            path[0], msg.sender, BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]
+            path[0], msg.sender, BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]
         );
         _swap(amounts, path, usedFactories, address(this));
         IWETH(WETH).withdraw(amounts[amounts.length - 1]);
@@ -322,7 +322,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsOut(factories, fees, minAmounts, amountIn, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'BabyRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         TransferHelper.safeTransferFrom(
-            path[0], msg.sender, BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]
+            path[0], msg.sender, BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]
         );
         _swap(amounts, usedFactories, path, address(this));
         IWETH(WETH).withdraw(amounts[amounts.length - 1]);
@@ -345,7 +345,7 @@ contract BabyRouter is IBabyRouter02, Ownable {
         (amounts, usedFactories) = BabyLibrary.getAggregationAmountsIn(factories, fees, minAmounts, amountOut, path);
         require(amounts[0] <= msg.value, 'BabyRouter: EXCESSIVE_INPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
-        assert(IWETH(WETH).transfer(BabyLibrary.pairFor(factories[1], path[0], path[1]), amounts[0]));
+        assert(IWETH(WETH).transfer(BabyLibrary.pairFor(usedFactories[0], path[0], path[1]), amounts[0]));
         _swap(amounts, usedFactories, path, to);
         // refund dust eth, if any
         if (msg.value > amounts[0]) TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]);

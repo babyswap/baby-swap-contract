@@ -107,7 +107,7 @@ library BabyLibrary {
             }
             if (j == factories.length) {
                 (uint reserveIn, uint reserveOut) = getReserves(factories[0], path[i], path[i + 1]);
-                amounts[i + 1] = getAmountOutWithFee(amounts[i], reserveIn, reserveOut, fees[j]);
+                amounts[i + 1] = getAmountOutWithFee(amounts[i], reserveIn, reserveOut, fees[0]);
             }
         }
     }
@@ -137,7 +137,7 @@ library BabyLibrary {
                     continue;
                 }
                 (uint reserveIn, uint reserveOut) = getReserves(factories[j], path[i - 1], path[i]);
-                amounts[i - 1] = getAmountIn(amounts[i], reserveIn, reserveOut);
+                amounts[i - 1] = getAmountInWithFee(amounts[i], reserveIn, reserveOut, fees[j]);
                 usedFactories[i - 1] = factories[j];
                 if (reserveIn >= minAmounts[i - 1] && reserveOut >= minAmounts[i]) {
                     break;
