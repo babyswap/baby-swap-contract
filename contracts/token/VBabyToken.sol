@@ -19,11 +19,6 @@ contract vBABYToken is Ownable {
     string public symbol = "vBABY";
     uint8 public decimals = 18;
 
-    uint256 public _MIN_PENALTY_RATIO_ = 15 * 10**16; // 15%
-    uint256 public _MAX_PENALTY_RATIO_ = 80 * 10**16; // 80%
-    uint256 public _MIN_MINT_RATIO_ = 10 * 10**16; //10%
-    uint256 public _MAX_MINT_RATIO_ = 80 * 10**16; //80%
-
     mapping(address => mapping(address => uint256)) internal _allowed;
 
     // ============ Storage ============
@@ -41,7 +36,7 @@ contract vBABYToken is Ownable {
     uint256 public constant _babyRatio = 100; // 100
     uint256 public _babyFeeBurnRatio = 30 * 10**16; //30%
     uint256 public _babyFeeReserveRatio = 20 * 10**16; //20%
-
+    uint256 public _feeRatio = 10 * 10**16; //10%;
     // accounting
     uint112 public alpha = 10**18; // 1
     uint112 public _totalBlockDistribution;
@@ -63,7 +58,12 @@ contract vBABYToken is Ownable {
 
     // ============ Events ============
 
-    event MintVBABY(address user, address superior, uint256 mintBABY, uint256 totalStakingPower);
+    event MintVBABY(
+        address user,
+        address superior,
+        uint256 mintBABY,
+        uint256 totalStakingPower
+    );
     event RedeemVBABY(
         address user,
         uint256 receiveBABY,
@@ -102,15 +102,29 @@ contract vBABYToken is Ownable {
     }
 
     event TokenInfo(uint256 babyTokenSupply, uint256 babyBalanceInVBaby);
-    event CurrentUserInfo(address user, uint128 stakingPower, uint128 superiorSP, address superior, uint256 credit, uint256 creditDebt);
-    
+    event CurrentUserInfo(
+        address user,
+        uint128 stakingPower,
+        uint128 superiorSP,
+        address superior,
+        uint256 credit,
+        uint256 creditDebt
+    );
+
     function logTokenInfo(IERC20 token) internal {
         emit TokenInfo(token.totalSupply(), token.balanceOf(address(this)));
     }
 
     function logCurrentUserInfo(address user) internal {
-        UserInfo storage currentUser = userInfo[user]; 
-        emit CurrentUserInfo(user, currentUser.stakingPower, currentUser.superiorSP, currentUser.superior, currentUser.credit, currentUser.creditDebt);
+        UserInfo storage currentUser = userInfo[user];
+        emit CurrentUserInfo(
+            user,
+            currentUser.stakingPower,
+            currentUser.superiorSP,
+            currentUser.superior,
+            currentUser.credit,
+            currentUser.creditDebt
+        );
     }
 
     // ============ Constructor ============
@@ -120,12 +134,12 @@ contract vBABYToken is Ownable {
         address babyTeam,
         address babyReserve,
         address babyTreasury
-    ) public {
+    ) {
         _babyToken = babyToken;
         _babyTeam = babyTeam;
         _babyReserve = babyReserve;
         _babyTreasury = babyTreasury;
-        changePerReward(15 * 10**18);
+        changePerReward(2 * 10**18);
     }
 
     // ============ Ownable Functions ============`
@@ -217,7 +231,12 @@ contract vBABYToken is Ownable {
         logTokenInfo(IERC20(_babyToken));
         logCurrentUserInfo(msg.sender);
         logCurrentUserInfo(user.superior);
-        emit MintVBABY(msg.sender, superiorAddress, babyAmount, _totalStakingPower);
+        emit MintVBABY(
+            msg.sender,
+            superiorAddress,
+            babyAmount,
+            _totalStakingPower
+        );
     }
 
     function redeem(uint256 vBabyAmount, bool all)
@@ -409,7 +428,7 @@ contract vBABYToken is Ownable {
             uint256 reserveBabyAmount
         )
     {
-        uint256 feeRatio = getBabyWithdrawFeeRatio();
+        uint256 feeRatio = _feeRatio;
 
         withdrawFeeBabyAmount = DecimalMath.mulFloor(babyAmount, feeRatio);
         babyReceive = babyAmount.sub(withdrawFeeBabyAmount);
@@ -427,49 +446,8 @@ contract vBABYToken is Ownable {
         withdrawFeeBabyAmount = withdrawFeeBabyAmount.sub(reserveBabyAmount);
     }
 
-    function getBabyWithdrawFeeRatio() public view returns (uint256 feeRatio) {
-        uint256 babyCirculationAmount = getCirculationSupply();
-
-        uint256 x = DecimalMath.divCeil(
-            totalSupply() * 100,
-            babyCirculationAmount
-        );
-
-        feeRatio = getRatioValue(x);
-    }
-
-    function setRatioValue(uint256 min, uint256 max) public onlyOwner {
-        require(max > min, "bad num");
-
-        _MIN_PENALTY_RATIO_ = min;
-        _MAX_PENALTY_RATIO_ = max;
-    }
-
-    function setMintLimitRatio(uint256 min, uint256 max) public onlyOwner {
-        require(max < 10**18, "bad max");
-        require((max - min) / 10**16 > 0, "bad max - min");
-
-        _MIN_MINT_RATIO_ = min;
-        _MAX_MINT_RATIO_ = max;
-    }
-
-    function getRatioValue(uint256 input) public view returns (uint256) {
-        // y = 15% (x < 0.1)
-        // y = 5% (x > 0.5)
-        // y = 0.175 - 0.25 * x
-
-        if (input <= _MIN_MINT_RATIO_) {
-            return _MAX_PENALTY_RATIO_;
-        } else if (input >= _MAX_MINT_RATIO_) {
-            return _MIN_PENALTY_RATIO_;
-        } else {
-            uint256 step = ((_MAX_PENALTY_RATIO_ - _MIN_PENALTY_RATIO_) * 10) /
-                ((_MAX_MINT_RATIO_ - _MIN_MINT_RATIO_) / 1e16);
-            return
-                _MAX_PENALTY_RATIO_ +
-                step -
-                DecimalMath.mulFloor(input, step * 10);
-        }
+    function setRatioValue(uint256 ratioFee) public onlyOwner {
+        _feeRatio = ratioFee;
     }
 
     function getSuperior(address account)
@@ -629,9 +607,5 @@ contract vBABYToken is Ownable {
         logCurrentUserInfo(to);
         logCurrentUserInfo(toUser.superior);
         emit Transfer(from, to, vBabyAmount);
-    }
-
-    function getCirculationSupply() public view returns (uint256 supply) {
-        supply = IERC20(_babyToken).totalSupply();
     }
 }
