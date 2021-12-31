@@ -10,8 +10,8 @@ import "hardhat/console.sol";
 contract vBabyNFTFee is Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    IERC20 public baby;
-    vBABYToken public vBaby;
+    IERC20 public immutable baby;
+    vBABYToken public immutable vBaby;
     uint256 public totalSupply;
 
     event ExecteEvent(uint256 value);

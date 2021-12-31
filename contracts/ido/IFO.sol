@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.6.0;
+pragma solidity =0.7.4;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 import "../interfaces/IBEP20.sol";
@@ -187,6 +187,14 @@ contract IFO is Ownable {
         uint256 duration
     ) external onlyOwner {
         require(
+            address(recipient) != address(0),
+            "IFO: recipient address cannot be 0"
+        );
+        require(
+            startTime > block.timestamp,
+            "IFO: startTime should be later than now"
+        );
+        require(
             block.timestamp >
                 ifoInfos[idIncrement].startTime.add(
                     ifoInfos[idIncrement].duration
@@ -306,13 +314,16 @@ contract IFO is Ownable {
         );
 
         if (prop > ROUND) {
-            _ifoAmount = record.payAmount[account].mul(ROUND).mul(ROUND).div(prop).div(
-                record.price
-            );
-
-            _sendBack = record.payAmount[account].sub(
-                _ifoAmount.mul(record.price).div(ROUND)
-            );
+            _ifoAmount = record
+                .payAmount[account]
+                .mul(ROUND)
+                .mul(ROUND)
+                .div(prop)
+                .div(record.price);
+            _sendBack = record
+                .payAmount[account]
+                .mul(ROUND.sub(ROUND.mul(ROUND).div(prop)))
+                .div(ROUND);
         } else {
             _ifoAmount = record.payAmount[account].mul(ROUND).div(record.price);
         }
@@ -341,7 +352,10 @@ contract IFO is Ownable {
             block.timestamp > ifoInfos[id].startTime.add(record.duration),
             "IFO: ifo is not over yet."
         );
-        require(!record.isCollected[msg.sender], "IFO: cannot claim repeatedly.");
+        require(
+            !record.isCollected[msg.sender],
+            "IFO: cannot claim repeatedly."
+        );
 
         uint256 ifoAmount;
         uint256 sendBack;

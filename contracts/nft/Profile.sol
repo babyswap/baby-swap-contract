@@ -62,7 +62,7 @@ contract Profile is ERC721("Profile", "Profile"), Ownable {
 
     function mint() external {
         require(!isMinted[msg.sender], "Profile: mint already involved");
-        require(mintTotal <= supplyHard, "Profile: End of issuance");
+        require(mintTotal <= supplyHard, "Profile: token haven't been minted.");
         require(
             block.timestamp > startMintTime,
             "Profile: It's not the start time"
@@ -97,7 +97,7 @@ contract Profile is ERC721("Profile", "Profile"), Ownable {
             "set avator of token that is not own"
         );
         avatar[msg.sender] = tokenId;
-        emit SetAvatar(msg.sender, 0);
+        emit SetAvatar(msg.sender, tokenId);
     }
 
     function _transfer(
