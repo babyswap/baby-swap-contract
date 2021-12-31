@@ -322,7 +322,7 @@ contract IFO is Ownable {
                 .div(record.price);
             _sendBack = record
                 .payAmount[account]
-                .mul(ROUND.sub(ROUND.mul(ROUND).div(prop)))
+                .mul(ROUND.sub(ROUND.mul(ROUND).add(prop).sub(1).div(prop)))
                 .div(ROUND);
         } else {
             _ifoAmount = record.payAmount[account].mul(ROUND).div(record.price);
