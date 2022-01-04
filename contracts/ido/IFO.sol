@@ -142,6 +142,7 @@ contract IFO is Ownable {
         address recipient;
         uint256 price;
         uint256 totalSupply;
+        uint256 totalAmount;
         uint256 startTime;
         uint256 duration;
         uint256 hardcap;
@@ -149,7 +150,7 @@ contract IFO is Ownable {
         mapping(address => uint256) payAmount;
         mapping(address => bool) isCollected;
     }
-
+    uint256 public constant MAX = uint256(-1);
     uint256 public constant ROUND = 10**18;
     uint256 public idIncrement = 0;
     mapping(uint256 => IFOInfo) public ifoInfos;
@@ -162,6 +163,7 @@ contract IFO is Ownable {
         uint256 price,
         uint256 hardcap,
         uint256 totalSupply,
+        uint256 totalAmount,
         uint256 startTime,
         uint256 duration
     );
@@ -170,6 +172,7 @@ contract IFO is Ownable {
         uint256 id,
         address account,
         uint256 ifoValue,
+        uint256 fee,
         uint256 backValue
     );
     event IFOWithdraw(uint256 id, uint256 receiveValue, uint256 leftValue);
@@ -209,6 +212,7 @@ contract IFO is Ownable {
             address(currency) != address(0),
             "IFO: currency address cannot be 0"
         );
+  
 
         idIncrement = idIncrement.add(1);
         IFOInfo storage ifo = ifoInfos[idIncrement];
@@ -216,6 +220,7 @@ contract IFO is Ownable {
         ifo.exhibits = exhibits;
         ifo.currency = currency;
         ifo.recipient = recipient;
+        ifo.totalAmount = totalAmount;
         ifo.price = totalAmount.mul(ROUND).div(totalSupply);
         ifo.hardcap = hardcap;
         ifo.totalSupply = totalSupply;
@@ -231,6 +236,7 @@ contract IFO is Ownable {
             ifo.price,
             hardcap,
             totalSupply,
+            totalAmount,
             startTime,
             duration
         );
@@ -365,10 +371,35 @@ contract IFO is Ownable {
         (ifoAmount, sendBack) = available(msg.sender, id);
 
         record.exhibits.safeTransfer(msg.sender, ifoAmount);
+        uint256 fee;
         if (sendBack > 0) {
+            uint256 rateFee = getFeeRate(id);
+            fee = sendBack.mul(rateFee).div(ROUND);
+            if (fee > 0) {
+                record.currency.safeTransfer(owner(), fee);
+                sendBack = sendBack.sub(fee);
+            }
             record.currency.safeTransfer(msg.sender, sendBack);
         }
 
-        emit Collected(id, msg.sender, ifoAmount, sendBack);
+        emit Collected(id, msg.sender, ifoAmount, fee, sendBack);
+    }
+
+    function getFeeRate(uint256 id) public view returns (uint256) {
+        if (ifoInfos[id].hardcap == MAX) {
+            return 0;
+        }
+        uint256 x = ifoInfos[id].incomeTotal.div(ifoInfos[id].totalAmount);
+        if (x >= 500) {
+            return ROUND.mul(20).div(10000);
+        } else if (x >= 250) {
+            return ROUND.mul(25).div(10000);
+        } else if (x >= 100) {
+            return ROUND.mul(30).div(10000);
+        } else if (x >= 50) {
+            return ROUND.mul(50).div(10000);
+        } else {
+            return ROUND.mul(100).div(10000);
+        }
     }
 }
