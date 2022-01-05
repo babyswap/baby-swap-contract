@@ -386,7 +386,7 @@ contract IFO is Ownable {
     }
 
     function getFeeRate(uint256 id) public view returns (uint256) {
-        if (ifoInfos[id].hardcap == MAX) {
+        if (ifoInfos[id].hardcap != MAX) {
             return 0;
         }
         uint256 x = ifoInfos[id].incomeTotal.div(ifoInfos[id].totalAmount);
