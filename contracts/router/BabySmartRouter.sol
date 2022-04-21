@@ -10,6 +10,7 @@ import "../interfaces/ISwapMining.sol";
 import "../interfaces/IERC20.sol";
 import "../interfaces/IWETH.sol";
 import "./BabyBaseRouter.sol";
+import "hardhat/console.sol";
 
 contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
     using SafeMath for uint;
@@ -58,15 +59,6 @@ contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
             case 0 { revert(free_mem_ptr, returndatasize()) }
             default { return(free_mem_ptr, returndatasize()) }
         }
-    }
-
-    function isBabyRouter(address[] memory _factories) internal view returns (bool) {
-        for (uint i = 0; i < _factories.length; i ++) {
-            if (_factories[i] != factory) {
-                return false;
-            }
-        }
-        return true;
     }
 
     function _swap(
@@ -142,7 +134,7 @@ contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
         amounts = BabyLibrarySmartRouter.getAggregationAmountsOut(factories, fees,  msg.value, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'BabyRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
-        amounts[0] = routerFee(factories[0], msg.sender, path[0], amounts[0]);
+        amounts[0] = routerFee(factories[0], address(this), path[0], amounts[0]);
         assert(IWETH(WETH).transfer(BabyLibrarySmartRouter.pairFor(factories[0], path[0], path[1]), amounts[0]));
         _swap(amounts, path, factories, to);
     }
@@ -201,11 +193,12 @@ contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
         amounts = BabyLibrarySmartRouter.getAggregationAmountsIn(factories, fees, amountOut, path);
         require(amounts[0] <= msg.value, 'BabyRouter: EXCESSIVE_INPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
-        amounts[0] = routerFee(factories[0], msg.sender, path[0], amounts[0]);
+        uint oldAmount = amounts[0];
+        amounts[0] = routerFee(factories[0], address(this), path[0], amounts[0]);
         assert(IWETH(WETH).transfer(BabyLibrarySmartRouter.pairFor(factories[0], path[0], path[1]), amounts[0]));
         _swap(amounts, path, factories, to);
         // refund dust eth, if any
-        if (msg.value > amounts[0]) TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]);
+        if (msg.value > oldAmount) TransferHelper.safeTransferETH(msg.sender, msg.value.sub(oldAmount));
     }
 
     function _swapSupportingFeeOnTransferTokens(
@@ -228,14 +221,14 @@ contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
             amounts[1] = BabyLibrarySmartRouter.getAmountOutWithFee(amounts[0], reserveInput, reserveOutput, fees[i]);
             }
             if (swapMining != address(0)) {
-                ISwapMining(swapMining).swap(msg.sender, input, output, amounts[i + 1]);
+                ISwapMining(swapMining).swap(msg.sender, input, output, amounts[1]);
             }
             (amounts[0], amounts[1]) = input == token0 ? (uint(0), amounts[1]) : (amounts[1], uint(0));
             address to = i < path.length - 2 ? address(this) : _to;
             pair.swap(amounts[0], amounts[1], to, new bytes(0));
             if (i < path.length - 2) {
                 routerFee(factories[i + 1], address(this), output, IERC20(output).balanceOf(address(this)));
-                TransferHelper.safeTransfer(path[i + 1], BabyLibrarySmartRouter.pairFor(factory, output, path[i + 2]), IERC20(output).balanceOf(address(this)));
+                TransferHelper.safeTransfer(path[i + 1], BabyLibrarySmartRouter.pairFor(factories[i + 1], output, path[i + 2]), IERC20(output).balanceOf(address(this)));
             }
         }
     }
@@ -272,7 +265,7 @@ contract BabySmartRouter is BabyBaseRouter, IBabySmartRouter {
         require(path[0] == WETH, 'BabyRouter');
         uint amountIn = msg.value;
         IWETH(WETH).deposit{value: amountIn}();
-        amountIn = routerFee(factories[0], msg.sender, path[0], amountIn);
+        amountIn = routerFee(factories[0], address(this), path[0], amountIn);
         assert(IWETH(WETH).transfer(BabyLibrarySmartRouter.pairFor(factories[0], path[0], path[1]), amountIn));
         uint balanceBefore = IERC20(path[path.length - 1]).balanceOf(to);
         _swapSupportingFeeOnTransferTokens(path, factories, fees, to);

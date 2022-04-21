@@ -5,11 +5,12 @@ pragma solidity >=0.5.0;
 import '../interfaces/IBabyFactory.sol';
 import '../interfaces/IBabyPair.sol';
 import "./SafeMath.sol";
+import "hardhat/console.sol";
 
 library BabyLibrarySmartRouter {
     using SafeMath for uint;
 
-    uint constant FEE_BASE = 10000;
+    uint constant FEE_BASE = 1000000;
 
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
@@ -93,6 +94,7 @@ library BabyLibrarySmartRouter {
         for (uint i; i < path.length - 1; i++) {
             (uint reserveIn, uint reserveOut) = getReserves(factories[i], path[i], path[i + 1]);
             amounts[i + 1] = getAmountOutWithFee(amounts[i], reserveIn, reserveOut, fees[i]);
+            console.log("reserveIn, reserveOut", reserveIn, reserveOut);
         }
     }
 
