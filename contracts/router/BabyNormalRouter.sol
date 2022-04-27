@@ -376,7 +376,7 @@ contract BabyNormalRouter is BabyBaseRouter, IBabyNormalRouter {
             if (i < path.length - 2) {
                 amountOutput = IERC20(output).balanceOf(address(this));
                 routerFee(address(this), output, amountOutput);
-                TransferHelper.safeTransfer(path[i + 1], BabyLibrary.pairFor(factories[i + 1], output, path[i + 2]), IERC20(output).balanceOf(address(this)));
+                TransferHelper.safeTransfer(path[i + 1], BabyLibrary.pairFor(factory, output, path[i + 2]), IERC20(output).balanceOf(address(this)));
             }
         }
     }
