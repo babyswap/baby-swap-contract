@@ -287,7 +287,7 @@ contract BabyNormalRouter is BabyBaseRouter, IBabyNormalRouter {
         amounts = BabyLibrary.getAmountsOut(factory, msg.value, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'BabyRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
-        amounts[0] = routerFee(msg.sender, address(this), amounts[0]);
+        amounts[0] = routerFee(address(this), path[0], amounts[0]);
         assert(IWETH(WETH).transfer(BabyLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
     }
@@ -343,7 +343,7 @@ contract BabyNormalRouter is BabyBaseRouter, IBabyNormalRouter {
         require(amounts[0] <= msg.value, 'BabyRouter: EXCESSIVE_INPUT_AMOUNT');
         IWETH(WETH).deposit{value: amounts[0]}();
         uint oldAmounts = amounts[0];
-        amounts[0] = routerFee(msg.sender, address(this), amounts[0]);
+        amounts[0] = routerFee(address(this), path[0], amounts[0]);
         assert(IWETH(WETH).transfer(BabyLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
         // refund dust eth, if any
@@ -409,7 +409,7 @@ contract BabyNormalRouter is BabyBaseRouter, IBabyNormalRouter {
         require(path[0] == WETH, 'BabyRouter: INVALID_PATH');
         uint amountIn = msg.value;
         IWETH(WETH).deposit{value: amountIn}();
-        amountIn = routerFee(msg.sender, address(this), amountIn);
+        amountIn = routerFee(address(this), path[0], amountIn);
         assert(IWETH(WETH).transfer(BabyLibrary.pairFor(factory, path[0], path[1]), amountIn));
         uint balanceBefore = IERC20(path[path.length - 1]).balanceOf(to);
         _swapSupportingFeeOnTransferTokens(path, to);
