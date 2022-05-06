@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.7.4;
+
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract LotteryTicket is Ownable {
+    using SafeMath for uint256;
+    using SafeERC20 for IERC20;
+
+    uint256 public startTime;
+    uint256 public supplyPerRound;
+    address public vault;
+    
+    mapping(uint256 => uint256) public exhangeTotalPerRound;
+    mapping(address => uint256) public ticketPricePerToken;
+    mapping(address => mapping(uint256 => uint256)) public userExhangeTotalPerRound;
+
+    event NewSupplyPerRound(uint256 oldTotal, uint256 newTotal);
+    event NewVault(address oldVault, address newVault);
+    event ExchangeLotteryTicket(address account, uint256 amount, address token, uint256 );
+    event NewTicketPrice(address token, uint256 oldPrice, uint256 newPrice);
+
+
+    function setTicketPrice(address _token, uint256 _ticketPrice) external onlyOwner {
+        emit NewTicketPrice(_token, ticketPricePerToken[_token], _ticketPrice);
+        ticketPricePerToken[_token] = _ticketPrice;
+    }
+
+    function setSupplyPerRound(uint256 _supplyPerRound) external onlyOwner {
+        emit NewSupplyPerRound(supplyPerRound, _supplyPerRound);
+        supplyPerRound = _supplyPerRound;
+    }
+
+    function currentRound() public view returns(uint256) {
+        return block.timestamp.sub(startTime).div(1 weeks).add(1);
+    }
+
+    constructor(address _vault, uint256 _startTime, uint256 _supplyPerRound) {
+        startTime = _startTime;
+        emit NewVault(vault, _vault);
+        vault = _vault;
+        emit NewSupplyPerRound(supplyPerRound, _supplyPerRound);
+        supplyPerRound = _supplyPerRound;
+    }
+
+    function exchange(address token,  uint number) external {
+        address user = msg.sender;
+        uint _round = currentRound();
+        uint nextRound = block.timestamp.add(1800).sub(startTime).div(1 weeks).add(1);
+        require(nextRound > _round, "cut off");
+        require(ticketPricePerToken[token] > 0, "unsupported token");
+        uint amount = ticketPricePerToken[token].mul(number);
+        IERC20(token).safeTransferFrom(user, vault, amount);
+        exhangeTotalPerRound[_round] = exhangeTotalPerRound[_round].add(number);
+        require(exhangeTotalPerRound[_round] <= supplyPerRound, "exceeded maximum limit");
+        userExhangeTotalPerRound[user][_round] = userExhangeTotalPerRound[user][_round].add(number);
+        emit ExchangeLotteryTicket(user, number, token, amount);
+    }
+}
