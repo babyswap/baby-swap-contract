@@ -1,14 +1,18 @@
 // SPDX-License-Identifier: MIT
 
+//This is the test contract
 pragma solidity 0.7.4;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
-contract ScratchOffTickets is Ownable {
+contract ScratchOffTickets is Ownable,ReentrancyGuard {
     using SafeMath for uint256;
     
+    uint256 public constant pauseCountdown = 1 hours;
+
     address public verifier;
     mapping(address => uint256) public exhangeTotalPerUser;
     uint256 public startTime;
@@ -62,18 +66,16 @@ contract ScratchOffTickets is Ownable {
         return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", keccak256(abi.encodePacked(user, balance))));
     }
 
-    function verify(address user, uint balance, uint8 v, bytes32 r, bytes32 s) external view returns (bool) {
+    function verify(address user, uint balance, uint8 v, bytes32 r, bytes32 s) public view returns (bool) {
         return ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", keccak256(abi.encodePacked(user, balance)))), v, r, s) == verifier;
     }
 
     function exchange(uint balance, uint number, uint8 v, bytes32 r, bytes32 s) external {
         address user = msg.sender;
-        bytes32 hash = keccak256(abi.encodePacked(user, balance));
-        bytes32 hashToSign = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
-        require(ecrecover(hashToSign, v, r, s) == verifier, "illegal verifier");
+        require(verify(user, balance, v, r, s), "illegal verifier");
         uint _round = currentRound();
-        uint nextRound = block.timestamp.add(1 hours).sub(startTime).div(1 weeks).add(1);
-        require(nextRound > _round, "cut off");
+        uint nextRound = block.timestamp.add(pauseCountdown).sub(startTime).div(1 weeks).add(1);
+        require(nextRound == _round, "exchange on hold");
         uint amount = ticketPrice.mul(number);
         exhangeTotalPerRound[_round] = exhangeTotalPerRound[_round].add(number);
         require(exhangeTotalPerRound[_round] <= supplyPerRound, "exceeded maximum limit");

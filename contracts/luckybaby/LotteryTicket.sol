@@ -1,22 +1,26 @@
 // SPDX-License-Identifier: MIT
 
+//This is the test contract
 pragma solidity 0.7.4;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 contract LotteryTicket is Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
+    uint256 public constant pauseCountdown = 30 minutes;
+
     uint256 public startTime;
     uint256 public supplyPerRound;
     address public vault;
     
-    mapping(uint256 => uint256) public exhangeTotalPerRound;
-    mapping(address => uint256) public ticketPricePerToken;
+    mapping(uint256 => uint256) public exchangeTotalPerRound;
+    mapping(address => uint256) public ticketPriceUsingToken;
     mapping(address => mapping(uint256 => uint256)) public userExhangeTotalPerRound;
 
     event NewSupplyPerRound(uint256 oldTotal, uint256 newTotal);
@@ -26,13 +30,20 @@ contract LotteryTicket is Ownable {
 
 
     function setTicketPrice(address _token, uint256 _ticketPrice) external onlyOwner {
-        emit NewTicketPrice(_token, ticketPricePerToken[_token], _ticketPrice);
-        ticketPricePerToken[_token] = _ticketPrice;
+        require(_token != adderss(0), "token cannot be zero address");
+        emit NewTicketPrice(_token, ticketPriceUsingToken[_token], _ticketPrice);
+        ticketPriceUsingToken[_token] = _ticketPrice;
     }
 
     function setSupplyPerRound(uint256 _supplyPerRound) external onlyOwner {
         emit NewSupplyPerRound(supplyPerRound, _supplyPerRound);
         supplyPerRound = _supplyPerRound;
+    }
+
+    function setVault(address _vault) external onlyOwner {
+        require(_vault != adderss(0), "vault cannot be zero address");
+        emit NewVault(vault, _vault);
+        vault = _vault;
     }
 
     function currentRound() public view returns(uint256) {
@@ -47,16 +58,16 @@ contract LotteryTicket is Ownable {
         supplyPerRound = _supplyPerRound;
     }
 
-    function exchange(address token,  uint number) external {
+    function exchange(address token,  uint number) external nonReentrant {
         address user = msg.sender;
         uint _round = currentRound();
-        uint nextRound = block.timestamp.add(1800).sub(startTime).div(1 weeks).add(1);
-        require(nextRound > _round, "cut off");
-        require(ticketPricePerToken[token] > 0, "unsupported token");
-        uint amount = ticketPricePerToken[token].mul(number);
+        uint nextRound = block.timestamp.add(pauseCountdown).sub(startTime).div(1 weeks).add(1);
+        require(nextRound == _round, "exchange on hold");
+        require(ticketPriceUsingToken[token] > 0, "unsupported token");
+        uint amount = ticketPriceUsingToken[token].mul(number);
         IERC20(token).safeTransferFrom(user, vault, amount);
-        exhangeTotalPerRound[_round] = exhangeTotalPerRound[_round].add(number);
-        require(exhangeTotalPerRound[_round] <= supplyPerRound, "exceeded maximum limit");
+        exchangeTotalPerRound[_round] = exchangeTotalPerRound[_round].add(number);
+        require(exchangeTotalPerRound[_round] <= supplyPerRound, "exceeded maximum limit");
         userExhangeTotalPerRound[user][_round] = userExhangeTotalPerRound[user][_round].add(number);
         emit ExchangeLotteryTicket(user, number, token, amount);
     }
