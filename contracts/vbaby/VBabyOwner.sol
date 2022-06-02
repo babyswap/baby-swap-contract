@@ -19,6 +19,7 @@ contract VBabyOwner is Ownable {
     event Repay(address user, uint repayAmount, uint donateAmount, uint userBorrowed, uint totalBorrowed, uint currentBalance);
 
     uint constant public PERCENT_BASE = 1e6;
+    uint constant public MAX_BORROW_PERCENT = 8e5;
 
     IBabyToken immutable public babyToken;
     IVBabyToken immutable public vBabyToken;
@@ -114,7 +115,7 @@ contract VBabyOwner is Ownable {
         require(_percent <= PERCENT_BASE, "illegal percent");
         totalPercent = totalPercent.sub(farmers[_farmer]).add(_percent);
         farmers[_farmer] = _percent;
-        require(totalPercent <= PERCENT_BASE, "illegal percent");
+        require(totalPercent <= MAX_BORROW_PERCENT, "illegal percent");
     }
 
     function addFarmer(address _farmer) external onlyOwner {
