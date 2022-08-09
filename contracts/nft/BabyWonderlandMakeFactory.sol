@@ -11,7 +11,7 @@ import "../interfaces/IBabyWonderlandMintable.sol";
 
 contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     using SafeERC20 for IERC20;
-
+    using SafeMath for uint256;
     // The address of the smart minner factory
     address public immutable SMART_MINNER_FACTORY;
     IBabyWonderlandMintable public babyWonderlandToken;
@@ -28,7 +28,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     bool public hasWhitelistLimit;
     mapping(address => uint256) public numberOfUsersMinted;
 
-    event MintPlots(uint256 startTokenId, uint256 number);
+    event MintPlots(address account, uint256 startTokenId, uint256 number);
     event NewReserve(address oldReserve, address newReserve);
 
     constructor() {
@@ -87,7 +87,41 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
         remaning -= 1;
         babyWonderlandToken.batchMint(msg.sender, plotsCapacity);
 
-        emit MintPlots(babyWonderlandToken.totalSupply() + 1, plotsCapacity);
+        emit MintPlots(
+            msg.sender,
+            babyWonderlandToken.totalSupply() + 1,
+            plotsCapacity
+        );
+    }
+
+    function batchMint(uint256 number) external payable nonReentrant {
+        require(block.timestamp > startTime, "has not started");
+        require(block.timestamp < endTime, "has expired");
+        require(
+            numberOfUsersMinted[msg.sender].add(number) <= poolLimitPerUser,
+            "purchase limit reached"
+        );
+        numberOfUsersMinted[msg.sender] += number;
+        for (uint256 i = 0; i != number; i++) {
+            require(remaning > 0, "insufficient remaining");
+            if (address(payToken) == address(0)) {
+                require(
+                    msg.value == price.mul(number),
+                    "not enough tokens to pay"
+                );
+                Address.sendValue(reserve, price);
+            } else {
+                payToken.safeTransferFrom(msg.sender, reserve, price);
+            }
+            remaning -= 1;
+            babyWonderlandToken.batchMint(msg.sender, plotsCapacity);
+
+            emit MintPlots(
+                msg.sender,
+                babyWonderlandToken.totalSupply() + 1,
+                plotsCapacity
+            );
+        }
     }
 
     modifier onlyWhitelist() {
