@@ -12,22 +12,22 @@ contract BabyWonderland is ERC721("Baby Wonderland", "BWL"), Ownable {
     event NewMinner(address account);
     event DelMinner(address account);
 
-    function addMinner(address _minner) external onlyOwner {
+    function addMinner(address _minter) external onlyOwner {
         require(
-            _minner != address(0),
-            "BabyWonderland: minner is zero address"
+            _minter != address(0),
+            "BabyWonderland: minter is zero address"
         );
-        isMinner[_minner] = true;
-        emit NewMinner(_minner);
+        isMinner[_minter] = true;
+        emit NewMinner(_minter);
     }
 
-    function delMinner(address _minner) external onlyOwner {
+    function delMinner(address _minter) external onlyOwner {
         require(
-            _minner != address(0),
-            "BabyWonderland: minner is the zero address"
+            _minter != address(0),
+            "BabyWonderland: minter is the zero address"
         );
-        isMinner[_minner] = false;
-        emit DelMinner(_minner);
+        isMinner[_minter] = false;
+        emit DelMinner(_minter);
     }
 
     function mint(address _recipient) public onlyMinner {
@@ -77,7 +77,7 @@ contract BabyWonderland is ERC721("Baby Wonderland", "BWL"), Ownable {
     modifier onlyMinner() {
         require(
             isMinner[msg.sender],
-            "BabyWonderland: caller is not the minner"
+            "BabyWonderland: caller is not the minter"
         );
         _;
     }

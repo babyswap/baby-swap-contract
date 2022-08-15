@@ -12,7 +12,7 @@ import "../interfaces/IBabyWonderlandMintable.sol";
 contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
-    // The address of the smart minner factory
+    // The address of the smart minter factory
     address public immutable SMART_MINNER_FACTORY;
     IBabyWonderlandMintable public babyWonderlandToken;
     IERC20 public payToken;

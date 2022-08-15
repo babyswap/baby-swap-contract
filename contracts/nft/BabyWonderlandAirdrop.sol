@@ -3,7 +3,6 @@
 pragma solidity 0.7.4;
 pragma experimental ABIEncoderV2;
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "../interfaces/IBabyWonderlandMintable.sol";
 
@@ -25,6 +24,7 @@ contract BabyWonderlandAirdrop is Ownable {
     event Claimed(address account, uint256 number);
 
     constructor(IBabyWonderlandMintable _rewardToken) {
+        require(address(_rewardToken) != address(0), "rewardToken is zero");
         rewardToken = _rewardToken;
         remaining = 2000;
     }
