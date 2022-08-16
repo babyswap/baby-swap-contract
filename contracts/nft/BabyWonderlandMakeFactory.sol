@@ -13,7 +13,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
     // The address of the smart minter factory
-    address public immutable SMART_MINNER_FACTORY;
+    address public immutable SMART_MINTER_FACTORY;
     IBabyWonderlandMintable public babyWonderlandToken;
     IERC20 public payToken;
     bool public isInitialized;
@@ -32,7 +32,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     event NewReserve(address oldReserve, address newReserve);
 
     constructor() {
-        SMART_MINNER_FACTORY = msg.sender;
+        SMART_MINTER_FACTORY = msg.sender;
     }
 
     function initialize(
@@ -48,7 +48,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
         bool _hasWhitelistLimit
     ) external {
         require(!isInitialized, "Already initialized the contract");
-        require(msg.sender == SMART_MINNER_FACTORY, "Not factory");
+        require(msg.sender == SMART_MINTER_FACTORY, "Not factory");
         require(_reserve != address(0), "_reserve can not be address(0)");
         require(_price > 0, "price can not be 0");
         require(_startTime <= _endTime, "invalid time params");
@@ -127,7 +127,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
     modifier onlyWhitelist() {
         require(
             !hasWhitelistLimit ||
-                BabyWonderlandMakeFactory(SMART_MINNER_FACTORY).whitelist(
+                BabyWonderlandMakeFactory(SMART_MINTER_FACTORY).whitelist(
                     msg.sender
                 ),
             "available only to whitelisted users"

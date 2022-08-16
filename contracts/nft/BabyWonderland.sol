@@ -6,31 +6,31 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract BabyWonderland is ERC721("Baby Wonderland", "BWL"), Ownable {
-    mapping(address => bool) public isMinner;
+    mapping(address => bool) public isMinter;
 
     event Mint(address account, uint256 tokenId);
-    event NewMinner(address account);
-    event DelMinner(address account);
+    event NewMinter(address account);
+    event DelMinter(address account);
 
-    function addMinner(address _minter) external onlyOwner {
+    function addMinter(address _minter) external onlyOwner {
         require(
             _minter != address(0),
             "BabyWonderland: minter is zero address"
         );
-        isMinner[_minter] = true;
-        emit NewMinner(_minter);
+        isMinter[_minter] = true;
+        emit NewMinter(_minter);
     }
 
-    function delMinner(address _minter) external onlyOwner {
+    function delMinter(address _minter) external onlyOwner {
         require(
             _minter != address(0),
             "BabyWonderland: minter is the zero address"
         );
-        isMinner[_minter] = false;
-        emit DelMinner(_minter);
+        isMinter[_minter] = false;
+        emit DelMinter(_minter);
     }
 
-    function mint(address _recipient) public onlyMinner {
+    function mint(address _recipient) public onlyMinter {
         require(
             _recipient != address(0),
             "BabyWonderland: recipient is zero address"
@@ -42,7 +42,7 @@ contract BabyWonderland is ERC721("Baby Wonderland", "BWL"), Ownable {
 
     function batchMint(address _recipient, uint256 _number)
         external
-        onlyMinner
+        onlyMinter
     {
         for (uint256 i = 0; i != _number; i++) {
             mint(_recipient);
@@ -74,9 +74,9 @@ contract BabyWonderland is ERC721("Baby Wonderland", "BWL"), Ownable {
         return string(abi.encodePacked(uri, ".json"));
     }
 
-    modifier onlyMinner() {
+    modifier onlyMinter() {
         require(
-            isMinner[msg.sender],
+            isMinter[msg.sender],
             "BabyWonderland: caller is not the minter"
         );
         _;
