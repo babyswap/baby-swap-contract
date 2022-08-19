@@ -140,7 +140,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
 contract BabyWonderlandMakeFactory is Ownable {
     uint256 private nonce;
 
-    address public babyWonderlandToken;
+    address immutable public babyWonderlandToken;
 
     mapping(address => bool) public isAdmin;
     mapping(address => bool) public whitelist;
@@ -151,6 +151,7 @@ contract BabyWonderlandMakeFactory is Ownable {
     event DelWhitelist(address account);
 
     constructor(address _babyWonderlandToken) {
+        require(_babyWonderlandToken != address(0), "illegal token address");
         babyWonderlandToken = _babyWonderlandToken;
     }
 
