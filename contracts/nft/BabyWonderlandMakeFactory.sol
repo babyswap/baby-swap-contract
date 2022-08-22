@@ -94,7 +94,7 @@ contract SmartMintableInitializable is ReentrancyGuard, Ownable {
         );
     }
 
-    function batchMint(uint256 number) external payable nonReentrant {
+    function batchMint(uint256 number) external payable nonReentrant onlyWhitelist {
         require(block.timestamp > startTime, "has not started");
         require(block.timestamp < endTime, "has expired");
         require(
