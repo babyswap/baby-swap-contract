@@ -24,7 +24,7 @@ contract BabyPoolV2 is SafeOwnable {
     }
 
     IERC20 public immutable token;
-    uint256 public immutable startBlock;
+    uint256 public startBlock;
     uint256 lastRewardBlock;                    // Last block number that CAKEs distribution occurs.
     uint256 accRewardPerShare;                  // Accumulated CAKEs per share, times 1e12. See below.
 
@@ -50,6 +50,7 @@ contract BabyPoolV2 is SafeOwnable {
     
     constructor(BabyVault _vault, uint256 _rewardPerBlock, uint256 _startBlock, address _owner) {
         token = _vault.babyToken();
+        require(_startBlock >= block.number, "illegal startBlock");
         startBlock = _startBlock;
         vault = _vault;
         rewardPerBlock = _rewardPerBlock;
@@ -72,6 +73,11 @@ contract BabyPoolV2 is SafeOwnable {
     function setRewardPerBlock(uint _rewardPerBlock) external onlyOwner {
         updatePool();
         rewardPerBlock = _rewardPerBlock;
+    }
+
+    function setStartBlock(uint _newStartBlock) external onlyOwner {
+        require(block.number < startBlock && _newStartBlock >= block.number, "illegal start Block Number");
+        startBlock = _newStartBlock;
     }
 
     function updatePool() public {
