@@ -31,7 +31,7 @@ contract BabyFarmV2 is SafeOwnable {
     }
 
     IERC20 public immutable rewardToken;
-    uint256 public immutable startBlock;
+    uint256 public startBlock;
 
     BabyVault public vault;
     uint256 public rewardPerBlock;
@@ -117,6 +117,11 @@ contract BabyFarmV2 is SafeOwnable {
 
     function setFetchVaultType(FETCH_VAULT_TYPE _newType) external onlyOwner {
         fetchVaultType = _newType;
+    }
+
+    function setStartBlock(uint _newStartBlock) external onlyOwner {
+        require(block.number < startBlock && _newStartBlock >= block.number, "illegal start Block Number");
+        startBlock = _newStartBlock;
     }
 
     function poolLength() external view returns (uint256) {
